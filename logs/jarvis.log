@@ -1,0 +1,869 @@
+2026-07-18 14:22:41 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 14:22:41 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 14:35:51 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 14:35:51 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 14:36:04 - INFO - Jarvis application starting.
+2026-07-18 14:36:04 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 14:36:14 - INFO - User: how are you jarvis
+2026-07-18 14:36:14 - INFO - Wake word detected.
+2026-07-18 14:36:14 - INFO - Jarvis: Yes Sir
+2026-07-18 14:36:15 - INFO - Jarvis: I'm listening.
+2026-07-18 14:36:25 - INFO - User: jarvis
+2026-07-18 14:36:25 - INFO - Executing Command: jarvis
+2026-07-18 14:36:25 - ERROR - History Load Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 14:36:25 - INFO - Command saved to history: jarvis
+2026-07-18 14:36:25 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 14:36:27 - INFO - Unknown Command: jarvis
+2026-07-18 14:36:33 - INFO - User: jarvis
+2026-07-18 14:36:33 - INFO - Executing Command: jarvis
+2026-07-18 14:36:33 - INFO - Command saved to history: jarvis
+2026-07-18 14:36:33 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 14:36:34 - INFO - Unknown Command: jarvis
+2026-07-18 14:36:46 - INFO - User: jarvis jarvis
+2026-07-18 14:36:46 - INFO - Executing Command: jarvis jarvis
+2026-07-18 14:36:46 - INFO - Command saved to history: jarvis jarvis
+2026-07-18 14:36:46 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 14:36:47 - INFO - Unknown Command: jarvis jarvis
+2026-07-18 14:36:58 - INFO - User: 1000 20
+2026-07-18 14:36:58 - INFO - Executing Command: 1000 20
+2026-07-18 14:36:58 - INFO - Command saved to history: 1000 20
+2026-07-18 14:36:58 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 14:36:59 - INFO - Unknown Command: 1000 20
+2026-07-18 14:37:05 - INFO - User: jarvis
+2026-07-18 14:37:05 - INFO - Executing Command: jarvis
+2026-07-18 14:37:05 - INFO - Command saved to history: jarvis
+2026-07-18 14:37:05 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 14:37:06 - INFO - Unknown Command: jarvis
+2026-07-18 14:37:13 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:37:23 - INFO - User: jarvis
+2026-07-18 14:37:23 - INFO - Executing Command: jarvis
+2026-07-18 14:37:23 - INFO - Command saved to history: jarvis
+2026-07-18 14:37:23 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 14:37:24 - INFO - Unknown Command: jarvis
+2026-07-18 14:37:33 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:37:40 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:37:47 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:37:55 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:37:55 - INFO - Jarvis: Going back to sleep.
+2026-07-18 14:37:56 - INFO - Conversation Timeout
+2026-07-18 14:38:04 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:38:10 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:38:18 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:38:26 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:38:34 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:38:42 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:38:49 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:38:56 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:39:08 - INFO - User: picture
+2026-07-18 14:39:15 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:39:22 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:39:28 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:39:38 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:39:45 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:39:56 - INFO - User: check your main dot method uses complete version
+2026-07-18 14:40:05 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:40:12 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:40:20 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:40:27 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:40:34 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:40:44 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:40:51 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:40:57 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:41:05 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:41:13 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 14:41:26 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:41:27 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 14:41:27 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 14:41:36 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:41:44 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 14:41:46 - INFO - Jarvis application starting.
+2026-07-18 14:41:46 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:15:40 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:15:40 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:16:07 - INFO - Jarvis application starting.
+2026-07-18 15:16:07 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:16:21 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:16:28 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:16:34 - INFO - User: jarvis
+2026-07-18 15:16:34 - INFO - Wake word detected: jarvis
+2026-07-18 15:16:34 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:16:36 - INFO - Jarvis: I'm listening.
+2026-07-18 15:16:46 - INFO - User: open youtube
+2026-07-18 15:16:46 - INFO - Executing Command: open youtube
+2026-07-18 15:16:47 - INFO - Command saved to history: open youtube
+2026-07-18 15:16:47 - INFO - Jarvis: Opening YouTube
+2026-07-18 15:16:59 - INFO - User: jarvis
+2026-07-18 15:16:59 - INFO - Executing Command: jarvis
+2026-07-18 15:16:59 - INFO - Command saved to history: jarvis
+2026-07-18 15:16:59 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:17:00 - INFO - Unknown Command: jarvis
+2026-07-18 15:17:10 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:17:14 - INFO - User: jarvis
+2026-07-18 15:17:14 - INFO - Executing Command: jarvis
+2026-07-18 15:17:14 - INFO - Command saved to history: jarvis
+2026-07-18 15:17:14 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:17:17 - INFO - Unknown Command: jarvis
+2026-07-18 15:17:24 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:17:38 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:17:45 - INFO - User: jarvis
+2026-07-18 15:17:45 - INFO - Executing Command: jarvis
+2026-07-18 15:17:45 - INFO - Command saved to history: jarvis
+2026-07-18 15:17:45 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:17:46 - INFO - Unknown Command: jarvis
+2026-07-18 15:17:54 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:18:01 - INFO - Jarvis stopped by user.
+2026-07-18 15:18:01 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:18:57 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:18:57 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:19:25 - INFO - Jarvis application starting.
+2026-07-18 15:19:25 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:19:36 - INFO - User: jarvis
+2026-07-18 15:19:36 - INFO - Wake word detected: jarvis
+2026-07-18 15:19:36 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:19:37 - INFO - Jarvis: I'm listening.
+2026-07-18 15:19:46 - INFO - User: open google
+2026-07-18 15:19:46 - INFO - Executing Command: open google
+2026-07-18 15:19:46 - INFO - Command saved to history: open google
+2026-07-18 15:19:46 - INFO - Jarvis: Opening Google
+2026-07-18 15:19:57 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:20:08 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:20:16 - INFO - User: open github
+2026-07-18 15:20:16 - INFO - Executing Command: open github
+2026-07-18 15:20:16 - INFO - Command saved to history: open github
+2026-07-18 15:20:16 - INFO - Jarvis: Opening GitHub
+2026-07-18 15:20:29 - INFO - User: play music
+2026-07-18 15:20:29 - INFO - Executing Command: play music
+2026-07-18 15:20:29 - INFO - Command saved to history: play music
+2026-07-18 15:20:29 - INFO - Jarvis: Playing music on YouTube
+2026-07-18 15:20:46 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:20:54 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:21:04 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:21:04 - INFO - Jarvis: Going back to sleep.
+2026-07-18 15:21:05 - INFO - Conversation Timeout
+2026-07-18 15:21:11 - INFO - User: how r u
+2026-07-18 15:21:19 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:21:25 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:21:36 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:21:44 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:21:54 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:22:09 - INFO - User: vedar
+2026-07-18 15:22:14 - INFO - User: weather in pune
+2026-07-18 15:22:21 - INFO - User: weather in pune
+2026-07-18 15:22:33 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:22:39 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:22:51 - INFO - User: microphone and speaker in the problem will
+2026-07-18 15:22:55 - INFO - User: recognise
+2026-07-18 15:22:59 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:08 - INFO - User: the first men underwear change in india
+2026-07-18 15:23:16 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:22 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:29 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:36 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:40 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:46 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:23:54 - INFO - User: yah mera pyar ka
+2026-07-18 15:24:02 - INFO - User: what we call after jadui with an important
+2026-07-18 15:24:10 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:24:16 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:24:23 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:24:29 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:24:37 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:24:45 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:24:52 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:25:05 - INFO - User: your actual open weather api key and make
+2026-07-18 15:25:11 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:25:18 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:25:23 - INFO - Jarvis stopped by user.
+2026-07-18 15:25:23 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:26:15 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:26:15 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:26:20 - INFO - Jarvis application starting.
+2026-07-18 15:26:20 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:26:28 - INFO - User: weather in pune
+2026-07-18 15:26:37 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:26:43 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:26:51 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:27:05 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:27:12 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:27:22 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:27:28 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:27:37 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:27:42 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:27:49 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:27:57 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:28:05 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:28:13 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:28:20 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:28:32 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:28:37 - INFO - Jarvis stopped by user.
+2026-07-18 15:28:37 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:32:21 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:32:21 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:32:32 - INFO - Jarvis application starting.
+2026-07-18 15:32:32 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:32:42 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:32:49 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:32:56 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:33:02 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:33:09 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:33:15 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:33:22 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:33:26 - INFO - Jarvis stopped by user.
+2026-07-18 15:33:26 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:33:31 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:33:31 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:33:34 - INFO - Jarvis application starting.
+2026-07-18 15:33:34 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:33:47 - INFO - User: jarvis
+2026-07-18 15:33:47 - INFO - Wake word detected: jarvis
+2026-07-18 15:33:47 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:33:47 - INFO - Jarvis: I'm listening.
+2026-07-18 15:33:52 - INFO - User: weather in pune
+2026-07-18 15:33:52 - INFO - Executing Command: weather in pune
+2026-07-18 15:33:52 - INFO - Command saved to history: weather in pune
+2026-07-18 15:33:53 - INFO - Jarvis: The weather in Pune is overcast clouds. The temperature is 25 degrees Celsius. It feels like 26 degrees Celsius. The humidity is 70 percent. The wind speed is 6.79 meters per second.
+2026-07-18 15:34:00 - INFO - User: the weather in pune for cloud in the temperature 25 degree celsius
+2026-07-18 15:34:00 - INFO - Executing Command: the weather in pune for cloud in the temperature 25 degree celsius
+2026-07-18 15:34:00 - INFO - Command saved to history: the weather in pune for cloud in the temperature 25 degree celsius
+2026-07-18 15:34:00 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:34:01 - INFO - Unknown Command: the weather in pune for cloud in the temperature 25 degree celsius
+2026-07-18 15:34:08 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:34:14 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:34:19 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:34:26 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:34:32 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:34:32 - INFO - Jarvis: Going back to sleep.
+2026-07-18 15:34:33 - INFO - Conversation Timeout
+2026-07-18 15:34:41 - INFO - User: jarvis
+2026-07-18 15:34:41 - INFO - Wake word detected: jarvis
+2026-07-18 15:34:41 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:34:42 - INFO - Jarvis: I'm listening.
+2026-07-18 15:34:46 - INFO - User: jarvis
+2026-07-18 15:34:46 - INFO - Executing Command: jarvis
+2026-07-18 15:34:46 - INFO - Command saved to history: jarvis
+2026-07-18 15:34:46 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:34:47 - INFO - Unknown Command: jarvis
+2026-07-18 15:34:58 - INFO - User: play song
+2026-07-18 15:34:58 - INFO - Executing Command: play song
+2026-07-18 15:34:58 - INFO - Command saved to history: play song
+2026-07-18 15:34:58 - INFO - Jarvis: Playing song on YouTube
+2026-07-18 15:35:07 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:35:16 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:35:29 - INFO - User: kyon nahin deti hai meri
+2026-07-18 15:35:29 - INFO - Executing Command: kyon nahin deti hai meri
+2026-07-18 15:35:29 - INFO - Command saved to history: kyon nahin deti hai meri
+2026-07-18 15:35:29 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:35:30 - INFO - Unknown Command: kyon nahin deti hai meri
+2026-07-18 15:35:34 - INFO - User: play
+2026-07-18 15:35:34 - INFO - Executing Command: play
+2026-07-18 15:35:34 - INFO - Command saved to history: play
+2026-07-18 15:35:34 - INFO - Jarvis: What should I play?
+2026-07-18 15:35:42 - INFO - User: play song on youtube coke studio
+2026-07-18 15:35:42 - INFO - Executing Command: play song on youtube coke studio
+2026-07-18 15:35:43 - INFO - Command saved to history: play song on youtube coke studio
+2026-07-18 15:35:43 - INFO - Jarvis: Playing song on youtube coke studio on YouTube
+2026-07-18 15:35:51 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:35:58 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:36:05 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:36:11 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:36:17 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:36:17 - INFO - Jarvis: Going back to sleep.
+2026-07-18 15:36:18 - INFO - Conversation Timeout
+2026-07-18 15:36:24 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:36:29 - INFO - User: kapil sharma show
+2026-07-18 15:36:37 - INFO - User: ki murti salman khan on youtube
+2026-07-18 15:36:41 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:36:47 - INFO - User: khushbu koi rahana song
+2026-07-18 15:36:53 - INFO - User: jism jaise
+2026-07-18 15:36:58 - INFO - User: jarvis
+2026-07-18 15:36:58 - INFO - Wake word detected: jarvis
+2026-07-18 15:36:58 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:36:58 - INFO - Jarvis: I'm listening.
+2026-07-18 15:37:03 - INFO - User: open
+2026-07-18 15:37:03 - INFO - Executing Command: open
+2026-07-18 15:37:03 - INFO - Command saved to history: open
+2026-07-18 15:37:03 - INFO - Jarvis: Please tell me which application you want to open.
+2026-07-18 15:37:09 - INFO - User: open vs code
+2026-07-18 15:37:09 - INFO - Executing Command: open vs code
+2026-07-18 15:37:09 - INFO - Command saved to history: open vs code
+2026-07-18 15:37:09 - INFO - Jarvis: Opening vs code.
+2026-07-18 15:37:10 - INFO - Application opened: vs code
+2026-07-18 15:37:14 - INFO - User: vs
+2026-07-18 15:37:14 - INFO - Executing Command: vs
+2026-07-18 15:37:14 - INFO - Command saved to history: vs
+2026-07-18 15:37:14 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:37:16 - INFO - Unknown Command: vs
+2026-07-18 15:37:26 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:37:33 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:37:40 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:37:44 - INFO - User: create a to do list
+2026-07-18 15:37:44 - INFO - Executing Command: create a to do list
+2026-07-18 15:37:44 - INFO - Command saved to history: create a to do list
+2026-07-18 15:37:44 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:37:44 - INFO - Unknown Command: create a to do list
+2026-07-18 15:37:53 - INFO - User: create a to do list
+2026-07-18 15:37:53 - INFO - Executing Command: create a to do list
+2026-07-18 15:37:53 - INFO - Command saved to history: create a to do list
+2026-07-18 15:37:53 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:37:53 - INFO - Unknown Command: create a to do list
+2026-07-18 15:38:00 - INFO - User: what is machine learning
+2026-07-18 15:38:00 - INFO - Executing Command: what is machine learning
+2026-07-18 15:38:00 - INFO - Command saved to history: what is machine learning
+2026-07-18 15:38:00 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:38:01 - INFO - Unknown Command: what is machine learning
+2026-07-18 15:38:07 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:38:14 - INFO - User: explain of oops concept
+2026-07-18 15:38:14 - INFO - Executing Command: explain of oops concept
+2026-07-18 15:38:14 - INFO - Command saved to history: explain of oops concept
+2026-07-18 15:38:14 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:38:15 - INFO - Unknown Command: explain of oops concept
+2026-07-18 15:38:19 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:38:24 - INFO - User: send email to rahul
+2026-07-18 15:38:24 - INFO - Executing Command: send email to rahul
+2026-07-18 15:38:24 - INFO - Command saved to history: send email to rahul
+2026-07-18 15:38:24 - INFO - Jarvis: Sending email to rahul
+2026-07-18 15:38:27 - INFO - Jarvis: Email authentication failed. Please check your Gmail app password.
+2026-07-18 15:38:28 - INFO - Jarvis: I could not send your email.
+2026-07-18 15:38:34 - INFO - User: send email to satyam
+2026-07-18 15:38:34 - INFO - Executing Command: send email to satyam
+2026-07-18 15:38:34 - INFO - Command saved to history: send email to satyam
+2026-07-18 15:38:34 - INFO - Jarvis: Sending email to satyam
+2026-07-18 15:38:37 - INFO - Jarvis: Email authentication failed. Please check your Gmail app password.
+2026-07-18 15:38:37 - INFO - Jarvis: I could not send your email.
+2026-07-18 15:38:43 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:38:49 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:38:56 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:38:59 - INFO - User: open chrome
+2026-07-18 15:38:59 - INFO - Executing Command: open chrome
+2026-07-18 15:38:59 - INFO - Command saved to history: open chrome
+2026-07-18 15:38:59 - INFO - Jarvis: Opening chrome.
+2026-07-18 15:39:00 - INFO - Application opened: chrome
+2026-07-18 15:39:10 - INFO - User: what is time now
+2026-07-18 15:39:10 - INFO - Executing Command: what is time now
+2026-07-18 15:39:10 - INFO - Command saved to history: what is time now
+2026-07-18 15:39:10 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:39:10 - INFO - Unknown Command: what is time now
+2026-07-18 15:39:15 - INFO - User: what is time now
+2026-07-18 15:39:15 - INFO - Executing Command: what is time now
+2026-07-18 15:39:15 - INFO - Command saved to history: what is time now
+2026-07-18 15:39:15 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:39:15 - INFO - Unknown Command: what is time now
+2026-07-18 15:39:21 - INFO - User: today date
+2026-07-18 15:39:21 - INFO - Executing Command: today date
+2026-07-18 15:39:21 - INFO - Command saved to history: today date
+2026-07-18 15:39:21 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:39:22 - INFO - Unknown Command: today date
+2026-07-18 15:39:29 - INFO - User: give me latest news
+2026-07-18 15:39:30 - INFO - Executing Command: give me latest news
+2026-07-18 15:39:30 - INFO - Command saved to history: give me latest news
+2026-07-18 15:39:30 - INFO - Jarvis: Getting the latest news.
+2026-07-18 15:39:31 - INFO - Jarvis: Here are the top 5 news headlines.
+2026-07-18 15:39:32 - INFO - Jarvis: Headline 1. US launches new strikes as Iran says civilian infrastructure hit - BBC
+2026-07-18 15:39:32 - INFO - Jarvis: Headline 2. Japan revises law to ensure supply of (male) heirs to the imperial throne - NPR
+2026-07-18 15:39:33 - INFO - Jarvis: Headline 3. A Pitt professor breaks down what to know about the diarrhea-causing cyclosporiasis - Pittsburgh Post-Gazette
+2026-07-18 15:39:34 - INFO - Jarvis: Headline 4. ‘God of War’ Shocker: Kratos Actor Ryan Hurst Recast After On-Set Injury - Variety
+2026-07-18 15:39:35 - INFO - Jarvis: Headline 5. At least 2 dead, hundreds rescued as flooding devastates parts of Texas - Austin American-Statesman
+2026-07-18 15:39:35 - INFO - Fetched 5 news headlines.
+2026-07-18 15:39:42 - INFO - User: tech news today
+2026-07-18 15:39:42 - INFO - Executing Command: tech news today
+2026-07-18 15:39:42 - INFO - Command saved to history: tech news today
+2026-07-18 15:39:42 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:39:42 - INFO - Unknown Command: tech news today
+2026-07-18 15:39:46 - INFO - User: news today
+2026-07-18 15:39:46 - INFO - Executing Command: news today
+2026-07-18 15:39:46 - INFO - Command saved to history: news today
+2026-07-18 15:39:46 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:39:47 - INFO - Unknown Command: news today
+2026-07-18 15:39:55 - INFO - User: india news headline
+2026-07-18 15:39:55 - INFO - Executing Command: india news headline
+2026-07-18 15:39:55 - INFO - Command saved to history: india news headline
+2026-07-18 15:39:55 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:39:56 - INFO - Unknown Command: india news headline
+2026-07-18 15:40:03 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:40:11 - INFO - User: is it going to rain tomorrow
+2026-07-18 15:40:11 - INFO - Executing Command: is it going to rain tomorrow
+2026-07-18 15:40:11 - INFO - Command saved to history: is it going to rain tomorrow
+2026-07-18 15:40:11 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:40:12 - INFO - Unknown Command: is it going to rain tomorrow
+2026-07-18 15:40:20 - INFO - User: tel mi a joke
+2026-07-18 15:40:20 - INFO - Executing Command: tel mi a joke
+2026-07-18 15:40:20 - INFO - Command saved to history: tel mi a joke
+2026-07-18 15:40:20 - INFO - Jarvis: What do you call a parrot that says "Squawk! Pieces of nine! Pieces of nine!"? A parrot-ey error.
+2026-07-18 15:40:28 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:40:31 - INFO - User: tell me a joke
+2026-07-18 15:40:31 - INFO - Executing Command: tell me a joke
+2026-07-18 15:40:31 - INFO - Command saved to history: tell me a joke
+2026-07-18 15:40:31 - INFO - Jarvis: Computer analyst to programmer: You start coding. I'll go find out what they want.
+2026-07-18 15:40:42 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:40:51 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:40:58 - INFO - User: set reminder at 5:00 a.m.
+2026-07-18 15:40:58 - INFO - Executing Command: set reminder at 5:00 a.m.
+2026-07-18 15:40:58 - INFO - Command saved to history: set reminder at 5:00 a.m.
+2026-07-18 15:40:58 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:40:59 - INFO - Unknown Command: set reminder at 5:00 a.m.
+2026-07-18 15:41:04 - INFO - User: set alarm at 5:00 p.m.
+2026-07-18 15:41:04 - INFO - Executing Command: set alarm at 5:00 p.m.
+2026-07-18 15:41:04 - INFO - Command saved to history: set alarm at 5:00 p.m.
+2026-07-18 15:41:04 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:41:05 - INFO - Unknown Command: set alarm at 5:00 p.m.
+2026-07-18 15:41:15 - INFO - User: complete assignment
+2026-07-18 15:41:15 - INFO - Executing Command: complete assignment
+2026-07-18 15:41:15 - INFO - Command saved to history: complete assignment
+2026-07-18 15:41:15 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:41:15 - INFO - Unknown Command: complete assignment
+2026-07-18 15:41:22 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:41:38 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:41:47 - INFO - User: jarvis what is machine learning
+2026-07-18 15:41:47 - INFO - Executing Command: jarvis what is machine learning
+2026-07-18 15:41:47 - INFO - Command saved to history: jarvis what is machine learning
+2026-07-18 15:41:47 - INFO - Jarvis: Sorry, I don't know this command yet.
+2026-07-18 15:41:48 - INFO - Unknown Command: jarvis what is machine learning
+2026-07-18 15:41:53 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:41:53 - INFO - Jarvis stopped by user.
+2026-07-18 15:41:53 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:46:50 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:46:50 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:46:54 - INFO - Jarvis application starting.
+2026-07-18 15:46:54 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:47:01 - INFO - User: what is machine learning
+2026-07-18 15:47:07 - INFO - User: what is machine learning
+2026-07-18 15:47:11 - INFO - User: open youtube
+2026-07-18 15:47:16 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:47:19 - INFO - User: open youtube
+2026-07-18 15:47:26 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:47:31 - INFO - Jarvis stopped by user.
+2026-07-18 15:47:31 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:47:35 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:47:35 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:47:44 - INFO - Jarvis application starting.
+2026-07-18 15:47:44 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:47:54 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:02 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:09 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:16 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:23 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:48:30 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:36 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:43 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:49 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:48:56 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:49:02 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:49:10 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:49:17 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:49:24 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:49:30 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:49:37 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:49:41 - INFO - Jarvis stopped by user.
+2026-07-18 15:49:41 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:49:55 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:49:55 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:50:01 - INFO - Jarvis application starting.
+2026-07-18 15:50:01 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:50:09 - INFO - User: play arijit singh song
+2026-07-18 15:50:17 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:50:20 - INFO - User: jarvis
+2026-07-18 15:50:20 - INFO - Wake word detected: jarvis
+2026-07-18 15:50:20 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:50:21 - INFO - Jarvis: I'm listening.
+2026-07-18 15:50:30 - INFO - User: open youtube
+2026-07-18 15:50:30 - INFO - Executing Command: open youtube
+2026-07-18 15:50:30 - INFO - Command saved to history: open youtube
+2026-07-18 15:50:30 - INFO - Jarvis: Opening YouTube
+2026-07-18 15:50:40 - INFO - User: play arijit singh song
+2026-07-18 15:50:40 - INFO - Executing Command: play arijit singh song
+2026-07-18 15:50:40 - INFO - Command saved to history: play arijit singh song
+2026-07-18 15:50:40 - INFO - Jarvis: Playing arijit singh song on YouTube
+2026-07-18 15:50:49 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:50:53 - INFO - User: what is machine learning
+2026-07-18 15:50:53 - INFO - Executing Command: what is machine learning
+2026-07-18 15:50:53 - INFO - Command saved to history: what is machine learning
+2026-07-18 15:50:53 - INFO - Sending unknown command to AI: what is machine learning
+2026-07-18 15:50:53 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:50:53 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:50:57 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:51:06 - INFO - User: jarvis
+2026-07-18 15:51:06 - INFO - Executing Command: jarvis
+2026-07-18 15:51:06 - INFO - Command saved to history: jarvis
+2026-07-18 15:51:06 - INFO - Sending unknown command to AI: jarvis
+2026-07-18 15:51:06 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:51:06 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:51:10 - INFO - User: jarvis
+2026-07-18 15:51:10 - INFO - Executing Command: jarvis
+2026-07-18 15:51:10 - INFO - Command saved to history: jarvis
+2026-07-18 15:51:10 - INFO - Sending unknown command to AI: jarvis
+2026-07-18 15:51:10 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:51:10 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:51:16 - INFO - User: open chrome
+2026-07-18 15:51:16 - INFO - Executing Command: open chrome
+2026-07-18 15:51:16 - INFO - Command saved to history: open chrome
+2026-07-18 15:51:16 - INFO - Jarvis: Opening chrome.
+2026-07-18 15:51:17 - INFO - Application opened: chrome
+2026-07-18 15:51:25 - INFO - User: open chat gpt
+2026-07-18 15:51:25 - INFO - Executing Command: open chat gpt
+2026-07-18 15:51:25 - INFO - Command saved to history: open chat gpt
+2026-07-18 15:51:25 - INFO - Jarvis: Sorry, I could not find chat gpt on your computer.
+2026-07-18 15:51:26 - ERROR - Application not found: chat gpt
+2026-07-18 15:51:35 - INFO - User: open ai
+2026-07-18 15:51:35 - INFO - Executing Command: open ai
+2026-07-18 15:51:35 - INFO - Command saved to history: open ai
+2026-07-18 15:51:35 - INFO - Jarvis: Sorry, I could not find ai on your computer.
+2026-07-18 15:51:36 - ERROR - Application not found: ai
+2026-07-18 15:51:43 - INFO - User: what is python
+2026-07-18 15:51:43 - INFO - Executing Command: what is python
+2026-07-18 15:51:43 - INFO - Command saved to history: what is python
+2026-07-18 15:51:43 - INFO - Sending unknown command to AI: what is python
+2026-07-18 15:51:43 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:51:43 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:51:50 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:51:57 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:52:03 - INFO - User: play samay
+2026-07-18 15:52:03 - INFO - Executing Command: play samay
+2026-07-18 15:52:03 - INFO - Command saved to history: play samay
+2026-07-18 15:52:03 - INFO - Jarvis: Playing samay on YouTube
+2026-07-18 15:52:11 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:52:19 - INFO - User: tu india score
+2026-07-18 15:52:19 - INFO - Executing Command: tu india score
+2026-07-18 15:52:19 - INFO - Command saved to history: tu india score
+2026-07-18 15:52:19 - INFO - Sending unknown command to AI: tu india score
+2026-07-18 15:52:19 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:52:19 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:52:24 - INFO - Jarvis stopped by user.
+2026-07-18 15:52:24 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 15:57:13 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 15:57:13 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 15:57:16 - INFO - Jarvis application starting.
+2026-07-18 15:57:16 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 15:57:26 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:57:34 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:57:37 - INFO - User: jarvis
+2026-07-18 15:57:37 - INFO - Wake word detected: jarvis
+2026-07-18 15:57:37 - INFO - Jarvis: Yes Sir.
+2026-07-18 15:57:37 - INFO - Jarvis: I'm listening.
+2026-07-18 15:57:42 - INFO - User: party machine learning
+2026-07-18 15:57:42 - INFO - Executing Command: party machine learning
+2026-07-18 15:57:42 - INFO - Command saved to history: party machine learning
+2026-07-18 15:57:42 - INFO - Sending unknown command to AI: party machine learning
+2026-07-18 15:57:42 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:57:42 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:57:49 - INFO - User: open youtube
+2026-07-18 15:57:49 - INFO - Executing Command: open youtube
+2026-07-18 15:57:49 - INFO - Command saved to history: open youtube
+2026-07-18 15:57:49 - INFO - Jarvis: Opening YouTube
+2026-07-18 15:57:56 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:58:04 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 15:58:10 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:58:14 - INFO - User: play song on youtube
+2026-07-18 15:58:14 - INFO - Executing Command: play song on youtube
+2026-07-18 15:58:14 - INFO - Command saved to history: play song on youtube
+2026-07-18 15:58:14 - INFO - Jarvis: Playing song on youtube on YouTube
+2026-07-18 15:58:22 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:58:29 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:58:37 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 15:58:41 - INFO - User: vs code
+2026-07-18 15:58:41 - INFO - Executing Command: vs code
+2026-07-18 15:58:41 - INFO - Command saved to history: vs code
+2026-07-18 15:58:41 - INFO - Sending unknown command to AI: vs code
+2026-07-18 15:58:41 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:58:41 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:58:46 - INFO - User: vs code
+2026-07-18 15:58:46 - INFO - Executing Command: vs code
+2026-07-18 15:58:46 - INFO - Command saved to history: vs code
+2026-07-18 15:58:46 - INFO - Sending unknown command to AI: vs code
+2026-07-18 15:58:46 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:58:46 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:58:53 - INFO - User: jarvis
+2026-07-18 15:58:53 - INFO - Executing Command: jarvis
+2026-07-18 15:58:53 - INFO - Command saved to history: jarvis
+2026-07-18 15:58:53 - INFO - Sending unknown command to AI: jarvis
+2026-07-18 15:58:53 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 15:58:53 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 15:58:58 - INFO - Jarvis stopped by user.
+2026-07-18 15:58:58 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 16:00:12 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 16:00:12 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 16:00:15 - INFO - Jarvis application starting.
+2026-07-18 16:00:15 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 16:00:25 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:00:31 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:00:38 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:00:44 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:00:51 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:00:55 - INFO - Jarvis stopped by user.
+2026-07-18 16:00:55 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 16:04:16 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 16:04:16 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 16:04:19 - INFO - Jarvis application starting.
+2026-07-18 16:04:19 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 16:04:29 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:04:38 - INFO - User: jarvis
+2026-07-18 16:04:38 - INFO - Wake word detected: jarvis
+2026-07-18 16:04:38 - INFO - Jarvis: Yes Sir.
+2026-07-18 16:04:38 - INFO - Jarvis: I'm listening.
+2026-07-18 16:04:43 - INFO - User: what is machine learning
+2026-07-18 16:04:43 - INFO - Executing Command: what is machine learning
+2026-07-18 16:04:43 - INFO - Command saved to history: what is machine learning
+2026-07-18 16:04:43 - INFO - Sending unknown command to AI: what is machine learning
+2026-07-18 16:04:43 - ERROR - AI Error: Expecting value: line 1 column 1 (char 0)
+2026-07-18 16:04:43 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 16:04:48 - INFO - User: open youtube
+2026-07-18 16:04:48 - INFO - Executing Command: open youtube
+2026-07-18 16:04:48 - INFO - Command saved to history: open youtube
+2026-07-18 16:04:48 - INFO - Jarvis: Opening YouTube
+2026-07-18 16:04:57 - INFO - User: play arijit singh song
+2026-07-18 16:04:57 - INFO - Executing Command: play arijit singh song
+2026-07-18 16:04:57 - INFO - Command saved to history: play arijit singh song
+2026-07-18 16:04:57 - INFO - Jarvis: Playing arijit singh song on YouTube
+2026-07-18 16:05:04 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:05:11 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:05:14 - INFO - Jarvis stopped by user.
+2026-07-18 16:05:14 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 16:35:47 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 16:35:47 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 16:35:58 - INFO - Jarvis application starting.
+2026-07-18 16:35:58 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 16:36:12 - INFO - User: jarvis
+2026-07-18 16:36:12 - INFO - Wake word detected: jarvis
+2026-07-18 16:36:12 - INFO - Jarvis: Yes Sir.
+2026-07-18 16:36:13 - INFO - Jarvis: I'm listening.
+2026-07-18 16:36:20 - INFO - User: what is machine learning
+2026-07-18 16:36:20 - INFO - Executing Command: what is machine learning
+2026-07-18 16:36:20 - INFO - Command saved to history: what is machine learning
+2026-07-18 16:36:20 - INFO - Sending unknown command to AI: what is machine learning
+2026-07-18 16:36:20 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:36:20 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-07-18 16:36:20 - ERROR - Gemini AI Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-07-18 16:36:20 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 16:36:27 - INFO - User: what is python
+2026-07-18 16:36:27 - INFO - Executing Command: what is python
+2026-07-18 16:36:27 - INFO - Command saved to history: what is python
+2026-07-18 16:36:27 - INFO - Sending unknown command to AI: what is python
+2026-07-18 16:36:27 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:36:27 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-07-18 16:36:27 - ERROR - Gemini AI Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-07-18 16:36:27 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 16:36:38 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:36:47 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:37:01 - INFO - User: are main tumhen blessing not available to new user input set up google currently recommended
+2026-07-18 16:37:01 - INFO - Executing Command: are main tumhen blessing not available to new user input set up google currently recommended
+2026-07-18 16:37:01 - INFO - Command saved to history: are main tumhen blessing not available to new user input set up google currently recommended
+2026-07-18 16:37:01 - INFO - Sending unknown command to AI: are main tumhen blessing not available to new user input set up google currently recommended
+2026-07-18 16:37:01 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:37:02 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-07-18 16:37:02 - ERROR - Gemini AI Error: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.5-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}
+2026-07-18 16:37:02 - INFO - Jarvis: Sorry, I couldn't connect to the AI service.
+2026-07-18 16:37:12 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:37:16 - INFO - Jarvis stopped by user.
+2026-07-18 16:37:16 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 16:37:47 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 16:37:47 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 16:37:57 - INFO - Jarvis application starting.
+2026-07-18 16:37:57 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 16:38:08 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:38:16 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:38:23 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:38:29 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:38:32 - INFO - Jarvis stopped by user.
+2026-07-18 16:38:32 - INFO - Jarvis: Goodbye Rohit.
+2026-07-18 16:38:49 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-18 16:38:49 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-18 16:38:53 - INFO - Jarvis application starting.
+2026-07-18 16:38:53 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-18 16:39:00 - INFO - User: jarvis
+2026-07-18 16:39:00 - INFO - Wake word detected: jarvis
+2026-07-18 16:39:00 - INFO - Jarvis: Yes Sir.
+2026-07-18 16:39:00 - INFO - Jarvis: I'm listening.
+2026-07-18 16:39:05 - INFO - User: what is machine learning
+2026-07-18 16:39:05 - INFO - Executing Command: what is machine learning
+2026-07-18 16:39:05 - INFO - Command saved to history: what is machine learning
+2026-07-18 16:39:05 - INFO - Sending unknown command to AI: what is machine learning
+2026-07-18 16:39:05 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:39:08 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:39:08 - INFO - AI Question: what is machine learning
+2026-07-18 16:39:08 - INFO - AI Answer: Machine learning, sir, is a branch of artificial intelligence where computers learn from data and improve their performance over time, without being explicitly programmed. It is essentially teaching systems to recognize patterns and make decisions on their own. 
+
+Would you like a quick example of how it's used?
+2026-07-18 16:39:08 - INFO - Jarvis: Machine learning, sir, is a branch of artificial intelligence where computers learn from data and improve their performance over time, without being explicitly programmed. It is essentially teaching systems to recognize patterns and make decisions on their own. 
+
+Would you like a quick example of how it's used?
+2026-07-18 16:39:14 - INFO - User: what is python
+2026-07-18 16:39:14 - INFO - Executing Command: what is python
+2026-07-18 16:39:14 - INFO - Command saved to history: what is python
+2026-07-18 16:39:14 - INFO - Sending unknown command to AI: what is python
+2026-07-18 16:39:14 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:39:18 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:39:18 - INFO - AI Question: what is python
+2026-07-18 16:39:18 - INFO - AI Answer: Python is a versatile, beginner-friendly programming language known for its simplicity and readability. It is widely used for everything from web development and automation to data science and artificial intelligence. 
+
+How can I assist you with Python today?
+2026-07-18 16:39:18 - INFO - Jarvis: Python is a versatile, beginner-friendly programming language known for its simplicity and readability. It is widely used for everything from web development and automation to data science and artificial intelligence. 
+
+How can I assist you with Python today?
+2026-07-18 16:39:23 - INFO - User: weather in pune
+2026-07-18 16:39:23 - INFO - Executing Command: weather in pune
+2026-07-18 16:39:23 - INFO - Command saved to history: weather in pune
+2026-07-18 16:39:24 - INFO - Jarvis: The weather in Pune is overcast clouds. The temperature is 26 degrees Celsius. It feels like 26 degrees Celsius. The humidity is 69 percent. The wind speed is 6.47 meters per second.
+2026-07-18 16:39:30 - INFO - User: play song arijit singh
+2026-07-18 16:39:30 - INFO - Executing Command: play song arijit singh
+2026-07-18 16:39:30 - INFO - Command saved to history: play song arijit singh
+2026-07-18 16:39:30 - INFO - Jarvis: Playing song arijit singh on YouTube
+2026-07-18 16:39:45 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:39:52 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:39:58 - INFO - User: jarvis
+2026-07-18 16:39:58 - INFO - Executing Command: jarvis
+2026-07-18 16:39:58 - INFO - Command saved to history: jarvis
+2026-07-18 16:39:58 - INFO - Sending unknown command to AI: jarvis
+2026-07-18 16:39:58 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:40:01 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:40:01 - INFO - AI Question: jarvis
+2026-07-18 16:40:01 - INFO - AI Answer: At your service. How can I help you today?
+2026-07-18 16:40:01 - INFO - Jarvis: At your service. How can I help you today?
+2026-07-18 16:40:07 - INFO - User: how r u
+2026-07-18 16:40:07 - INFO - Executing Command: how r u
+2026-07-18 16:40:07 - INFO - Command saved to history: how r u
+2026-07-18 16:40:07 - INFO - Sending unknown command to AI: how r u
+2026-07-18 16:40:07 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:40:10 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:40:10 - INFO - AI Question: how r u
+2026-07-18 16:40:10 - INFO - AI Answer: I'm doing very well, thank you for asking. How can I help you today?
+2026-07-18 16:40:10 - INFO - Jarvis: I'm doing very well, thank you for asking. How can I help you today?
+2026-07-18 16:40:19 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:40:22 - ERROR - Jarvis Loop Error: [Errno -9988] Stream closed
+2026-07-18 16:40:22 - INFO - Jarvis: I encountered an error, but I am still running.
+2026-07-18 16:40:29 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:40:33 - INFO - User: machine learning kya hota
+2026-07-18 16:40:38 - INFO - User: jarvis
+2026-07-18 16:40:38 - INFO - Wake word detected: jarvis
+2026-07-18 16:40:38 - INFO - Jarvis: Yes Sir.
+2026-07-18 16:40:39 - INFO - Jarvis: I'm listening.
+2026-07-18 16:40:48 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:40:52 - INFO - User: jarvis
+2026-07-18 16:40:52 - INFO - Executing Command: jarvis
+2026-07-18 16:40:52 - INFO - Command saved to history: jarvis
+2026-07-18 16:40:52 - INFO - Sending unknown command to AI: jarvis
+2026-07-18 16:40:52 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:40:55 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:40:55 - INFO - AI Question: jarvis
+2026-07-18 16:40:55 - INFO - AI Answer: At your service. How can I help you today?
+2026-07-18 16:40:55 - INFO - Jarvis: At your service. How can I help you today?
+2026-07-18 16:40:59 - INFO - User: what is machine learning
+2026-07-18 16:40:59 - INFO - Executing Command: what is machine learning
+2026-07-18 16:40:59 - INFO - Command saved to history: what is machine learning
+2026-07-18 16:40:59 - INFO - Sending unknown command to AI: what is machine learning
+2026-07-18 16:40:59 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:41:02 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:41:02 - INFO - AI Question: what is machine learning
+2026-07-18 16:41:02 - INFO - AI Answer: At its core, machine learning is a branch of artificial intelligence that allows computers to learn from data and experience, rather than following strict, pre-written instructions. Essentially, it enables systems to recognize patterns and make decisions on their own, much like how we humans learn. 
+
+Is there a particular aspect of it you would like to explore further?
+2026-07-18 16:41:02 - INFO - Jarvis: At its core, machine learning is a branch of artificial intelligence that allows computers to learn from data and experience, rather than following strict, pre-written instructions. Essentially, it enables systems to recognize patterns and make decisions on their own, much like how we humans learn. 
+
+Is there a particular aspect of it you would like to explore further?
+2026-07-18 16:41:09 - INFO - User: play arijit singh
+2026-07-18 16:41:09 - INFO - Executing Command: play arijit singh
+2026-07-18 16:41:09 - INFO - Command saved to history: play arijit singh
+2026-07-18 16:41:09 - INFO - Jarvis: Playing arijit singh on YouTube
+2026-07-18 16:41:23 - INFO - User: weather in pune
+2026-07-18 16:41:23 - INFO - Executing Command: weather in pune
+2026-07-18 16:41:23 - INFO - Command saved to history: weather in pune
+2026-07-18 16:41:25 - INFO - Jarvis: The weather in Pune is overcast clouds. The temperature is 26 degrees Celsius. It feels like 26 degrees Celsius. The humidity is 69 percent. The wind speed is 6.47 meters per second.
+2026-07-18 16:41:31 - INFO - User: pankaj ghat mein barish kab hoga
+2026-07-18 16:41:31 - INFO - Executing Command: pankaj ghat mein barish kab hoga
+2026-07-18 16:41:32 - INFO - Command saved to history: pankaj ghat mein barish kab hoga
+2026-07-18 16:41:32 - INFO - Sending unknown command to AI: pankaj ghat mein barish kab hoga
+2026-07-18 16:41:32 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:41:38 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:41:38 - INFO - AI Question: pankaj ghat mein barish kab hoga
+2026-07-18 16:41:38 - INFO - AI Answer: I'm sorry, sir, but I don't have access to real-time weather data for Pankaj Ghat at the moment. I recommend checking your local weather app for the most accurate and up-to-date forecast.
+2026-07-18 16:41:38 - INFO - Jarvis: I'm sorry, sir, but I don't have access to real-time weather data for Pankaj Ghat at the moment. I recommend checking your local weather app for the most accurate and up-to-date forecast.
+2026-07-18 16:41:44 - INFO - User: real time
+2026-07-18 16:41:44 - INFO - Executing Command: real time
+2026-07-18 16:41:44 - INFO - Command saved to history: real time
+2026-07-18 16:41:44 - INFO - Sending unknown command to AI: real time
+2026-07-18 16:41:44 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:41:49 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:41:49 - INFO - AI Question: real time
+2026-07-18 16:41:49 - INFO - AI Answer: I am operating in real-time, sir. Are you looking for the current time, or is there something else I can help you with?
+2026-07-18 16:41:49 - INFO - Jarvis: I am operating in real-time, sir. Are you looking for the current time, or is there something else I can help you with?
+2026-07-18 16:41:55 - INFO - User: malshej ghat mein barish kab
+2026-07-18 16:41:55 - INFO - Executing Command: malshej ghat mein barish kab
+2026-07-18 16:41:55 - INFO - Command saved to history: malshej ghat mein barish kab
+2026-07-18 16:41:55 - INFO - Sending unknown command to AI: malshej ghat mein barish kab
+2026-07-18 16:41:55 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:41:59 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:41:59 - INFO - AI Question: malshej ghat mein barish kab
+2026-07-18 16:41:59 - INFO - AI Answer: Malshej Ghat mein monsoon **June se September** tak rehta hai. 
+
+July aur August mein yahan sabse achhi baarish hoti hai, jo wahan ki haryali aur jharne dekhne ke liye sabse behtareen samay hai. 
+
+Kya aapko iske baare mein kuch aur jaanna hai?
+2026-07-18 16:41:59 - INFO - Jarvis: Malshej Ghat mein monsoon **June se September** tak rehta hai. 
+
+July aur August mein yahan sabse achhi baarish hoti hai, jo wahan ki haryali aur jharne dekhne ke liye sabse behtareen samay hai. 
+
+Kya aapko iske baare mein kuch aur jaanna hai?
+2026-07-18 16:42:05 - INFO - User: sabse acchi wali soti hai
+2026-07-18 16:42:05 - INFO - Executing Command: sabse acchi wali soti hai
+2026-07-18 16:42:05 - INFO - Command saved to history: sabse acchi wali soti hai
+2026-07-18 16:42:05 - INFO - Sending unknown command to AI: sabse acchi wali soti hai
+2026-07-18 16:42:05 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:42:10 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:42:11 - INFO - AI Question: sabse acchi wali soti hai
+2026-07-18 16:42:11 - INFO - AI Answer: Kya aap 'scooty' ke baare mein puch rahe hain ya 'cotton' (suti) kapdo ke baare mein? 
+
+Agar aap scooty ki baat kar rahe hain, toh **Honda Activa** aur **TVS Jupiter** sabse behtareen maani jaati hain. Aapko kiski jankari chahiye, sir?
+2026-07-18 16:42:11 - INFO - Jarvis: Kya aap 'scooty' ke baare mein puch rahe hain ya 'cotton' (suti) kapdo ke baare mein? 
+
+Agar aap scooty ki baat kar rahe hain, toh **Honda Activa** aur **TVS Jupiter** sabse behtareen maani jaati hain. Aapko kiski jankari chahiye, sir?
+2026-07-18 16:42:18 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:42:23 - INFO - User: open vs code
+2026-07-18 16:42:23 - INFO - Executing Command: open vs code
+2026-07-18 16:42:23 - INFO - Command saved to history: open vs code
+2026-07-18 16:42:23 - INFO - Jarvis: Opening vs code.
+2026-07-18 16:42:24 - INFO - Application opened: vs code
+2026-07-18 16:42:33 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-18 16:42:40 - INFO - User: open vs code and write a program for prime number
+2026-07-18 16:42:40 - INFO - Executing Command: open vs code and write a program for prime number
+2026-07-18 16:42:40 - INFO - Command saved to history: open vs code and write a program for prime number
+2026-07-18 16:42:40 - INFO - Jarvis: Sorry, I could not find vs code and write a program for prime number on your computer.
+2026-07-18 16:42:41 - ERROR - Application not found: vs code and write a program for prime number
+2026-07-18 16:42:51 - INFO - User: open vs code and write a program for prime number in
+2026-07-18 16:42:51 - INFO - Executing Command: open vs code and write a program for prime number in
+2026-07-18 16:42:51 - INFO - Command saved to history: open vs code and write a program for prime number in
+2026-07-18 16:42:51 - INFO - Jarvis: Sorry, I could not find vs code and write a program for prime number in on your computer.
+2026-07-18 16:42:52 - ERROR - Application not found: vs code and write a program for prime number in
+2026-07-18 16:42:59 - INFO - User: give me code of prime number in
+2026-07-18 16:42:59 - INFO - Executing Command: give me code of prime number in
+2026-07-18 16:42:59 - INFO - Command saved to history: give me code of prime number in
+2026-07-18 16:42:59 - INFO - Sending unknown command to AI: give me code of prime number in
+2026-07-18 16:42:59 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-18 16:43:09 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-18 16:43:09 - INFO - AI Question: give me code of prime number in
+2026-07-18 16:43:09 - INFO - AI Answer: Certainly. Here is a simple Python function to check if a number is prime:
+
+```python
+def is_prime(n):
+    if n < 2: 
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0: 
+            return False
+    return True
+```
+
+Would you prefer this code in a different programming language?
+2026-07-18 16:43:09 - INFO - Jarvis: Certainly. Here is a simple Python function to check if a number is prime:
+
+```python
+def is_prime(n):
+    if n < 2: 
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0: 
+            return False
+    return True
+```
+
+Would you prefer this code in a different programming language?
+2026-07-18 16:43:17 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-18 16:43:20 - INFO - Jarvis stopped by user.
+2026-07-18 16:43:20 - INFO - Jarvis: Goodbye Rohit.
