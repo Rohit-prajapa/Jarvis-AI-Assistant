@@ -338,5 +338,9 @@
     {
         "command": "give me code of prime number in",
         "timestamp": "18-07-2026 04:42:59 PM"
+    },
+    {
+        "command": "open youtube",
+        "timestamp": "27-07-2026 02:34:10 PM"
     }
 ]

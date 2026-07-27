@@ -867,3 +867,21 @@ Would you prefer this code in a different programming language?
 2026-07-18 16:43:17 - ERROR - WaitTimeoutError: No speech detected.
 2026-07-18 16:43:20 - INFO - Jarvis stopped by user.
 2026-07-18 16:43:20 - INFO - Jarvis: Goodbye Rohit.
+2026-07-27 14:33:12 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-27 14:33:12 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-27 14:33:38 - INFO - Jarvis application starting.
+2026-07-27 14:33:38 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-27 14:33:52 - INFO - User: open youtube
+2026-07-27 14:33:59 - INFO - User: open youtube
+2026-07-27 14:34:05 - INFO - User: jarvis
+2026-07-27 14:34:05 - INFO - Wake word detected: jarvis
+2026-07-27 14:34:05 - INFO - Jarvis: Yes Sir.
+2026-07-27 14:34:06 - INFO - Jarvis: I'm listening.
+2026-07-27 14:34:10 - INFO - User: open youtube
+2026-07-27 14:34:10 - INFO - Executing Command: open youtube
+2026-07-27 14:34:10 - INFO - Command saved to history: open youtube
+2026-07-27 14:34:10 - INFO - Jarvis: Opening YouTube
+2026-07-27 14:34:19 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-27 14:34:28 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-27 14:34:29 - INFO - Jarvis stopped by user.
+2026-07-27 14:34:29 - INFO - Jarvis: Goodbye Rohit.
