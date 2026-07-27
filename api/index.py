@@ -1,11 +1,15 @@
 import os
+import requests
 
 from flask import Flask, jsonify, render_template_string, request
-from google import genai
 
 
 app = Flask(__name__)
 
+
+# ============================================================
+# FRONTEND
+# ============================================================
 
 HTML = r"""
 <!DOCTYPE html>
@@ -91,8 +95,7 @@ HTML = r"""
         }
 
         @keyframes pulse {
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
 
@@ -247,27 +250,34 @@ HTML = r"""
     </style>
 </head>
 
+
 <body>
 
 <div class="container">
 
     <div class="header">
         <h1>JARVIS</h1>
+
         <div class="subtitle">
-            AI Assistant • Powered by Gemini
+            AI Assistant • Powered by OpenRouter
         </div>
     </div>
+
 
     <div class="jarvis-circle">
         🤖
     </div>
 
+
     <div id="chat">
+
         <div class="message jarvis-message">
             <span class="sender">Jarvis: </span>
             Hello! I am Jarvis, your AI assistant. How can I help you today?
         </div>
+
     </div>
+
 
     <div class="input-area">
 
@@ -282,15 +292,21 @@ HTML = r"""
             Send
         </button>
 
-        <button id="micButton" type="button" title="Speak to Jarvis">
+        <button
+            id="micButton"
+            type="button"
+            title="Speak to Jarvis"
+        >
             🎤
         </button>
 
     </div>
 
+
     <div id="status">
         ● Jarvis Online
     </div>
+
 
     <div class="footer">
         Jarvis AI Assistant
@@ -301,11 +317,21 @@ HTML = r"""
 
 <script>
 
-const input = document.getElementById("message");
-const chat = document.getElementById("chat");
-const sendButton = document.getElementById("sendButton");
-const micButton = document.getElementById("micButton");
-const statusElement = document.getElementById("status");
+const input =
+    document.getElementById("message");
+
+const chat =
+    document.getElementById("chat");
+
+const sendButton =
+    document.getElementById("sendButton");
+
+const micButton =
+    document.getElementById("micButton");
+
+const statusElement =
+    document.getElementById("status");
+
 
 let voiceMode = false;
 
@@ -316,27 +342,56 @@ let voiceMode = false;
 
 function addMessage(sender, text, type) {
 
-    const box = document.createElement("div");
+    const box =
+        document.createElement("div");
+
 
     if (type === "user") {
-        box.className = "message user-message";
+
+        box.className =
+            "message user-message";
+
     } else {
-        box.className = "message jarvis-message";
+
+        box.className =
+            "message jarvis-message";
     }
 
-    const senderSpan = document.createElement("span");
-    senderSpan.className = "sender";
-    senderSpan.textContent = sender + ": ";
 
-    const textSpan = document.createElement("span");
-    textSpan.textContent = text;
+    const senderSpan =
+        document.createElement("span");
 
-    box.appendChild(senderSpan);
-    box.appendChild(textSpan);
+    senderSpan.className =
+        "sender";
 
-    chat.appendChild(box);
+    senderSpan.textContent =
+        sender + ": ";
 
-    chat.scrollTop = chat.scrollHeight;
+
+    const textSpan =
+        document.createElement("span");
+
+    textSpan.textContent =
+        text;
+
+
+    box.appendChild(
+        senderSpan
+    );
+
+    box.appendChild(
+        textSpan
+    );
+
+
+    chat.appendChild(
+        box
+    );
+
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
 
     return box;
 }
@@ -364,7 +419,7 @@ function normalizeCommand(text) {
 
 
 // ============================================================
-// WEBSITE LIST
+// WEBSITES
 // ============================================================
 
 const websites = {
@@ -427,14 +482,18 @@ const websites = {
 
 function detectCommand(userMessage) {
 
-    const command = normalizeCommand(userMessage);
+    const command =
+        normalizeCommand(userMessage);
 
 
-    // --------------------------------------------------------
+    // ========================================================
     // OPEN WEBSITE
-    // --------------------------------------------------------
+    // ========================================================
 
-    for (const [name, website] of Object.entries(websites)) {
+    for (
+        const [name, website]
+        of Object.entries(websites)
+    ) {
 
         if (
             command === "open " + name ||
@@ -447,160 +506,235 @@ function detectCommand(userMessage) {
                 handled: true,
                 type: "navigate",
                 url: website.url,
-                response: "Opening " + website.label
+                response:
+                    "Opening " +
+                    website.label
             };
         }
     }
 
 
-    // --------------------------------------------------------
-    // PLAY SOMETHING ON YOUTUBE
-    // --------------------------------------------------------
+    // ========================================================
+    // PLAY SONG / VIDEO
+    // ========================================================
 
-    if (command.startsWith("play ")) {
+    if (
+        command.startsWith("play ")
+    ) {
 
-        const query = command.substring(5).trim();
+        const query =
+            command
+                .substring(5)
+                .trim();
+
 
         if (!query) {
 
             return {
                 handled: true,
                 type: "message",
-                response: "Tell me what you want me to play."
+                response:
+                    "Tell me what you want me to play."
             };
         }
 
+
         return {
             handled: true,
+
             type: "navigate",
+
             url:
                 "https://www.youtube.com/results?search_query=" +
                 encodeURIComponent(query),
+
             response:
-                "Searching YouTube for " + query
+                "Searching YouTube for " +
+                query
         };
     }
 
 
-    // --------------------------------------------------------
+    // ========================================================
     // SEARCH YOUTUBE FOR
-    // --------------------------------------------------------
+    // ========================================================
 
-    if (command.startsWith("search youtube for ")) {
+    if (
+        command.startsWith(
+            "search youtube for "
+        )
+    ) {
 
-        const query = command
-            .replace("search youtube for ", "")
-            .trim();
+        const query =
+            command
+                .replace(
+                    "search youtube for ",
+                    ""
+                )
+                .trim();
+
 
         if (query) {
 
             return {
                 handled: true,
+
                 type: "navigate",
+
                 url:
                     "https://www.youtube.com/results?search_query=" +
                     encodeURIComponent(query),
+
                 response:
-                    "Searching YouTube for " + query
+                    "Searching YouTube for " +
+                    query
             };
         }
     }
 
 
-    // --------------------------------------------------------
+    // ========================================================
     // SEARCH ON YOUTUBE
-    // --------------------------------------------------------
+    // ========================================================
 
-    if (command.startsWith("search on youtube ")) {
+    if (
+        command.startsWith(
+            "search on youtube "
+        )
+    ) {
 
-        const query = command
-            .replace("search on youtube ", "")
-            .trim();
+        const query =
+            command
+                .replace(
+                    "search on youtube ",
+                    ""
+                )
+                .trim();
+
 
         if (query) {
 
             return {
                 handled: true,
+
                 type: "navigate",
+
                 url:
                     "https://www.youtube.com/results?search_query=" +
                     encodeURIComponent(query),
+
                 response:
-                    "Searching YouTube for " + query
+                    "Searching YouTube for " +
+                    query
             };
         }
     }
 
 
-    // --------------------------------------------------------
+    // ========================================================
     // SEARCH GOOGLE FOR
-    // --------------------------------------------------------
+    // ========================================================
 
-    if (command.startsWith("search google for ")) {
+    if (
+        command.startsWith(
+            "search google for "
+        )
+    ) {
 
-        const query = command
-            .replace("search google for ", "")
-            .trim();
+        const query =
+            command
+                .replace(
+                    "search google for ",
+                    ""
+                )
+                .trim();
+
 
         if (query) {
 
             return {
                 handled: true,
+
                 type: "navigate",
+
                 url:
                     "https://www.google.com/search?q=" +
                     encodeURIComponent(query),
+
                 response:
-                    "Searching Google for " + query
+                    "Searching Google for " +
+                    query
             };
         }
     }
 
 
-    // --------------------------------------------------------
+    // ========================================================
     // SEARCH ON GOOGLE
-    // --------------------------------------------------------
+    // ========================================================
 
-    if (command.startsWith("search on google ")) {
+    if (
+        command.startsWith(
+            "search on google "
+        )
+    ) {
 
-        const query = command
-            .replace("search on google ", "")
-            .trim();
+        const query =
+            command
+                .replace(
+                    "search on google ",
+                    ""
+                )
+                .trim();
+
 
         if (query) {
 
             return {
                 handled: true,
+
                 type: "navigate",
+
                 url:
                     "https://www.google.com/search?q=" +
                     encodeURIComponent(query),
+
                 response:
-                    "Searching Google for " + query
+                    "Searching Google for " +
+                    query
             };
         }
     }
 
 
-    // --------------------------------------------------------
+    // ========================================================
     // GOOGLE SOMETHING
-    // Example: google machine learning
-    // --------------------------------------------------------
+    // ========================================================
 
-    if (command.startsWith("google ")) {
+    if (
+        command.startsWith("google ")
+    ) {
 
-        const query = command.substring(7).trim();
+        const query =
+            command
+                .substring(7)
+                .trim();
+
 
         if (query) {
 
             return {
                 handled: true,
+
                 type: "navigate",
+
                 url:
                     "https://www.google.com/search?q=" +
                     encodeURIComponent(query),
+
                 response:
-                    "Searching Google for " + query
+                    "Searching Google for " +
+                    query
             };
         }
     }
@@ -613,12 +747,17 @@ function detectCommand(userMessage) {
 
 
 // ============================================================
-// TEXT TO SPEECH
+// SPEAK
 // ============================================================
 
-function speakText(text, onComplete = null) {
+function speakText(
+    text,
+    onComplete = null
+) {
 
-    if (!("speechSynthesis" in window)) {
+    if (
+        !("speechSynthesis" in window)
+    ) {
 
         if (onComplete) {
             onComplete();
@@ -627,52 +766,99 @@ function speakText(text, onComplete = null) {
         return;
     }
 
+
     window.speechSynthesis.cancel();
 
-    const speech = new SpeechSynthesisUtterance(text);
 
-    speech.lang = "en-IN";
-    speech.rate = 1;
-    speech.pitch = 1;
-    speech.volume = 1;
+    const speech =
+        new SpeechSynthesisUtterance(
+            text
+        );
 
-    const voices = window.speechSynthesis.getVoices();
+
+    speech.lang =
+        "en-IN";
+
+    speech.rate =
+        1;
+
+    speech.pitch =
+        1;
+
+    speech.volume =
+        1;
+
+
+    const voices =
+        window.speechSynthesis
+            .getVoices();
+
 
     const preferredVoice =
-        voices.find(function(voice) {
-            return voice.lang === "en-IN";
-        }) ||
-        voices.find(function(voice) {
-            return voice.lang && voice.lang.startsWith("en");
-        });
+        voices.find(
+            function(voice) {
+                return (
+                    voice.lang ===
+                    "en-IN"
+                );
+            }
+        ) ||
+        voices.find(
+            function(voice) {
+                return (
+                    voice.lang &&
+                    voice.lang.startsWith(
+                        "en"
+                    )
+                );
+            }
+        );
+
 
     if (preferredVoice) {
-        speech.voice = preferredVoice;
+
+        speech.voice =
+            preferredVoice;
     }
 
-    speech.onstart = function() {
-        statusElement.textContent = "🔊 Jarvis is speaking...";
-    };
 
-    speech.onend = function() {
+    speech.onstart =
+        function() {
 
-        statusElement.textContent = "● Jarvis Online";
+            statusElement.textContent =
+                "🔊 Jarvis is speaking...";
+        };
 
-        if (onComplete) {
-            onComplete();
-        }
-    };
 
-    speech.onerror = function() {
+    speech.onend =
+        function() {
 
-        statusElement.textContent = "● Jarvis Online";
+            statusElement.textContent =
+                "● Jarvis Online";
 
-        if (onComplete) {
-            onComplete();
-        }
-    };
 
-    window.speechSynthesis.speak(speech);
+            if (onComplete) {
+                onComplete();
+            }
+        };
+
+
+    speech.onerror =
+        function() {
+
+            statusElement.textContent =
+                "● Jarvis Online";
+
+
+            if (onComplete) {
+                onComplete();
+            }
+        };
+
+
+    window.speechSynthesis.speak(
+        speech
+    );
 }
 
 
@@ -680,7 +866,10 @@ function speakText(text, onComplete = null) {
 // EXECUTE COMMAND
 // ============================================================
 
-function executeCommand(command, shouldSpeak) {
+function executeCommand(
+    command,
+    shouldSpeak
+) {
 
     addMessage(
         "Jarvis",
@@ -689,30 +878,41 @@ function executeCommand(command, shouldSpeak) {
     );
 
 
-    if (command.type === "message") {
+    if (
+        command.type === "message"
+    ) {
 
         if (shouldSpeak) {
-            speakText(command.response);
+
+            speakText(
+                command.response
+            );
         }
 
         return;
     }
 
 
-    if (command.type === "navigate") {
+    if (
+        command.type === "navigate"
+    ) {
 
         if (shouldSpeak) {
 
             speakText(
                 command.response,
+
                 function() {
-                    window.location.href = command.url;
+
+                    window.location.href =
+                        command.url;
                 }
             );
 
         } else {
 
-            window.location.href = command.url;
+            window.location.href =
+                command.url;
         }
     }
 }
@@ -724,16 +924,21 @@ function executeCommand(command, shouldSpeak) {
 
 async function sendMessage() {
 
-    const userMessage = input.value.trim();
+    const userMessage =
+        input.value.trim();
+
 
     if (!userMessage) {
         return;
     }
 
 
-    const shouldSpeak = voiceMode;
+    const shouldSpeak =
+        voiceMode;
 
-    voiceMode = false;
+
+    voiceMode =
+        false;
 
 
     addMessage(
@@ -743,16 +948,23 @@ async function sendMessage() {
     );
 
 
-    input.value = "";
+    input.value =
+        "";
 
 
-    // --------------------------------------------------------
-    // LOCAL COMMANDS FIRST
-    // --------------------------------------------------------
+    // ========================================================
+    // LOCAL COMMANDS
+    // ========================================================
 
-    const command = detectCommand(userMessage);
+    const command =
+        detectCommand(
+            userMessage
+        );
 
-    if (command.handled) {
+
+    if (
+        command.handled
+    ) {
 
         executeCommand(
             command,
@@ -763,19 +975,24 @@ async function sendMessage() {
     }
 
 
-    // --------------------------------------------------------
-    // GEMINI QUESTION
-    // --------------------------------------------------------
+    // ========================================================
+    // AI CHAT
+    // ========================================================
 
-    const thinking = addMessage(
-        "Jarvis",
-        "Thinking...",
-        "jarvis"
-    );
+    const thinking =
+        addMessage(
+            "Jarvis",
+            "Thinking...",
+            "jarvis"
+        );
 
 
-    sendButton.disabled = true;
-    micButton.disabled = true;
+    sendButton.disabled =
+        true;
+
+    micButton.disabled =
+        true;
+
 
     statusElement.textContent =
         "◌ Jarvis is thinking...";
@@ -783,27 +1000,33 @@ async function sendMessage() {
 
     try {
 
-        const response = await fetch(
-            "/api/chat",
-            {
-                method: "POST",
+        const response =
+            await fetch(
+                "/api/chat",
+                {
+                    method: "POST",
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
 
-                body: JSON.stringify({
-                    message: userMessage
-                })
-            }
-        );
+                    body:
+                        JSON.stringify({
+                            message:
+                                userMessage
+                        })
+                }
+            );
 
 
         let data;
 
+
         try {
 
-            data = await response.json();
+            data =
+                await response.json();
 
         } catch (error) {
 
@@ -813,12 +1036,18 @@ async function sendMessage() {
         }
 
 
-        if (thinking && thinking.isConnected) {
+        if (
+            thinking &&
+            thinking.isConnected
+        ) {
+
             thinking.remove();
         }
 
 
-        if (!response.ok) {
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
                 data.error ||
@@ -843,16 +1072,23 @@ async function sendMessage() {
             "● Jarvis Online";
 
 
-        // Speak ONLY if microphone was used.
+        // Speak only when microphone was used.
 
         if (shouldSpeak) {
-            speakText(reply);
+
+            speakText(
+                reply
+            );
         }
 
 
     } catch (error) {
 
-        if (thinking && thinking.isConnected) {
+        if (
+            thinking &&
+            thinking.isConnected
+        ) {
+
             thinking.remove();
         }
 
@@ -865,7 +1101,8 @@ async function sendMessage() {
 
         addMessage(
             "Jarvis",
-            "Error: " + error.message,
+            "Error: " +
+            error.message,
             "jarvis"
         );
 
@@ -876,8 +1113,11 @@ async function sendMessage() {
 
     } finally {
 
-        sendButton.disabled = false;
-        micButton.disabled = false;
+        sendButton.disabled =
+            false;
+
+        micButton.disabled =
+            false;
 
         input.focus();
     }
@@ -905,7 +1145,10 @@ function startListening() {
     }
 
 
-    if ("speechSynthesis" in window) {
+    if (
+        "speechSynthesis" in window
+    ) {
+
         window.speechSynthesis.cancel();
     }
 
@@ -914,102 +1157,128 @@ function startListening() {
         new SpeechRecognition();
 
 
-    recognition.lang = "en-IN";
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognition.lang =
+        "en-IN";
+
+    recognition.continuous =
+        false;
+
+    recognition.interimResults =
+        false;
+
+    recognition.maxAlternatives =
+        1;
 
 
-    recognition.onstart = function() {
+    recognition.onstart =
+        function() {
 
-        micButton.classList.add(
-            "listening"
-        );
-
-        statusElement.textContent =
-            "🎤 Listening...";
-    };
-
-
-    recognition.onresult = function(event) {
-
-        const transcript =
-            event.results[0][0].transcript;
-
-
-        input.value = transcript;
-
-        voiceMode = true;
-
-
-        micButton.classList.remove(
-            "listening"
-        );
-
-
-        statusElement.textContent =
-            "◌ Processing voice...";
-
-
-        sendMessage();
-    };
-
-
-    recognition.onerror = function(event) {
-
-        console.error(
-            "Speech recognition error:",
-            event.error
-        );
-
-
-        voiceMode = false;
-
-
-        micButton.classList.remove(
-            "listening"
-        );
-
-
-        if (event.error === "not-allowed") {
+            micButton.classList.add(
+                "listening"
+            );
 
             statusElement.textContent =
-                "❌ Microphone permission denied";
-
-        } else if (event.error === "no-speech") {
-
-            statusElement.textContent =
-                "🎤 No speech detected";
-
-        } else if (event.error === "audio-capture") {
-
-            statusElement.textContent =
-                "❌ Microphone not available";
-
-        } else {
-
-            statusElement.textContent =
-                "● Jarvis Online";
-        }
-    };
+                "🎤 Listening...";
+        };
 
 
-    recognition.onend = function() {
+    recognition.onresult =
+        function(event) {
 
-        micButton.classList.remove(
-            "listening"
-        );
+            const transcript =
+                event
+                    .results[0][0]
+                    .transcript;
 
 
-        if (
-            statusElement.textContent ===
-            "🎤 Listening..."
-        ) {
+            input.value =
+                transcript;
+
+
+            voiceMode =
+                true;
+
+
+            micButton.classList.remove(
+                "listening"
+            );
+
 
             statusElement.textContent =
-                "● Jarvis Online";
-        }
-    };
+                "◌ Processing voice...";
+
+
+            sendMessage();
+        };
+
+
+    recognition.onerror =
+        function(event) {
+
+            console.error(
+                "Speech recognition error:",
+                event.error
+            );
+
+
+            voiceMode =
+                false;
+
+
+            micButton.classList.remove(
+                "listening"
+            );
+
+
+            if (
+                event.error ===
+                "not-allowed"
+            ) {
+
+                statusElement.textContent =
+                    "❌ Microphone permission denied";
+
+            } else if (
+                event.error ===
+                "no-speech"
+            ) {
+
+                statusElement.textContent =
+                    "🎤 No speech detected";
+
+            } else if (
+                event.error ===
+                "audio-capture"
+            ) {
+
+                statusElement.textContent =
+                    "❌ Microphone not available";
+
+            } else {
+
+                statusElement.textContent =
+                    "● Jarvis Online";
+            }
+        };
+
+
+    recognition.onend =
+        function() {
+
+            micButton.classList.remove(
+                "listening"
+            );
+
+
+            if (
+                statusElement.textContent ===
+                "🎤 Listening..."
+            ) {
+
+                statusElement.textContent =
+                    "● Jarvis Online";
+            }
+        };
 
 
     try {
@@ -1023,7 +1292,10 @@ function startListening() {
             error
         );
 
-        voiceMode = false;
+
+        voiceMode =
+            false;
+
 
         statusElement.textContent =
             "● Jarvis Online";
@@ -1032,14 +1304,15 @@ function startListening() {
 
 
 // ============================================================
-// BUTTON EVENTS
+// EVENTS
 // ============================================================
 
 sendButton.addEventListener(
     "click",
     function() {
 
-        voiceMode = false;
+        voiceMode =
+            false;
 
         sendMessage();
     }
@@ -1059,11 +1332,14 @@ input.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Enter") {
+        if (
+            event.key === "Enter"
+        ) {
 
             event.preventDefault();
 
-            voiceMode = false;
+            voiceMode =
+                false;
 
             sendMessage();
         }
@@ -1090,7 +1366,7 @@ window.addEventListener(
 
 
 # ============================================================
-# HOME ROUTE
+# HOME
 # ============================================================
 
 @app.route("/")
@@ -1099,7 +1375,7 @@ def home():
 
 
 # ============================================================
-# STATUS ROUTE
+# STATUS
 # ============================================================
 
 @app.route("/api/status", methods=["GET"])
@@ -1109,25 +1385,25 @@ def status():
             "success": True,
             "assistant": "Jarvis",
             "status": "online",
-            "provider": "Google Gemini",
+            "provider": "OpenRouter",
         }
     )
 
 
 # ============================================================
-# CHAT ROUTE
+# OPENROUTER CHAT
 # ============================================================
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
     try:
-        api_key = os.environ.get("GEMINI_API_KEY")
+        api_key = os.environ.get("OPENROUTER_API_KEY")
 
         if not api_key:
             return jsonify(
                 {
                     "success": False,
-                    "error": "GEMINI_API_KEY is missing from Vercel.",
+                    "error": "OPENROUTER_API_KEY is missing from Vercel.",
                 }
             ), 500
 
@@ -1145,48 +1421,129 @@ def chat():
                 }
             ), 400
 
-        client = genai.Client(
-            api_key=api_key
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        }
+
+        payload = {
+            "model": "openrouter/free",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": (
+                        "You are Jarvis, a smart and helpful AI assistant. "
+                        "Your name is Jarvis. "
+                        "Answer the user's actual question directly. "
+                        "Give accurate and useful answers. "
+                        "Keep simple answers concise. "
+                        "Give detailed explanations when necessary. "
+                        "For programming questions, provide correct code and explanations. "
+                        "You can communicate naturally in English, Hindi, and Hinglish. "
+                        "Match the user's language when appropriate. "
+                        "Avoid unnecessary introductions. "
+                        "Do not claim to physically control the user's computer."
+                    ),
+                },
+                {
+                    "role": "user",
+                    "content": message,
+                },
+            ],
+        }
+
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=45,
         )
 
-        prompt = f"""
-You are Jarvis, a smart AI assistant.
+        try:
+            result = response.json()
 
-Your name is Jarvis.
+        except ValueError:
+            print(
+                "OpenRouter non-JSON response:",
+                response.text,
+            )
 
-Rules:
-1. Answer the user's actual question directly.
-2. Keep simple answers concise and clear.
-3. Explain complicated topics when necessary.
-4. For programming questions, provide correct and useful code.
-5. You can communicate in English, Hindi, or Hinglish.
-6. Match the user's language when possible.
-7. Be helpful and conversational.
-8. Do not claim that you physically control the user's computer.
-9. Avoid unnecessary introductions.
+            return jsonify(
+                {
+                    "success": False,
+                    "error": "OpenRouter returned an invalid response.",
+                }
+            ), 502
 
-User message:
-{message}
+        if response.status_code != 200:
+            print(
+                "OpenRouter API Error:",
+                result,
+            )
 
-Jarvis:
-"""
+            error_data = result.get(
+                "error",
+                {},
+            )
 
-        response = client.models.generate_content(
-            model="gemini-3.6-flash",
-            contents=prompt,
+            if isinstance(error_data, dict):
+                error_message = error_data.get(
+                    "message",
+                    "OpenRouter request failed.",
+                )
+            else:
+                error_message = str(
+                    error_data
+                )
+
+            if response.status_code == 429:
+                error_message = (
+                    "Free AI limit reached. "
+                    "Please wait and try again."
+                )
+
+            return jsonify(
+                {
+                    "success": False,
+                    "error": error_message,
+                }
+            ), response.status_code
+
+        choices = result.get(
+            "choices",
+            [],
         )
 
-        reply = getattr(
-            response,
-            "text",
-            None,
+        if not choices:
+            print(
+                "OpenRouter empty choices:",
+                result,
+            )
+
+            return jsonify(
+                {
+                    "success": False,
+                    "error": "AI returned an empty response.",
+                }
+            ), 502
+
+        first_choice = choices[0]
+
+        message_data = first_choice.get(
+            "message",
+            {},
+        )
+
+        reply = message_data.get(
+            "content",
+            "",
         )
 
         if not reply:
             return jsonify(
                 {
                     "success": False,
-                    "error": "Gemini returned an empty response.",
+                    "error": "AI returned an empty answer.",
                 }
             ), 502
 
@@ -1194,12 +1551,34 @@ Jarvis:
             {
                 "success": True,
                 "reply": reply.strip(),
+                "provider": "OpenRouter",
             }
         )
 
+    except requests.exceptions.Timeout:
+        return jsonify(
+            {
+                "success": False,
+                "error": "AI request timed out. Please try again.",
+            }
+        ), 504
+
+    except requests.exceptions.RequestException as error:
+        print(
+            "OpenRouter Network Error:",
+            repr(error),
+        )
+
+        return jsonify(
+            {
+                "success": False,
+                "error": "Could not connect to the AI service.",
+            }
+        ), 502
+
     except Exception as error:
         print(
-            "Jarvis Gemini Error:",
+            "Jarvis OpenRouter Error:",
             repr(error),
         )
 
