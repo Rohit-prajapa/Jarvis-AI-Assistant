@@ -885,3 +885,29 @@ Would you prefer this code in a different programming language?
 2026-07-27 14:34:28 - ERROR - UnknownValueError: Speech not recognized.
 2026-07-27 14:34:29 - INFO - Jarvis stopped by user.
 2026-07-27 14:34:29 - INFO - Jarvis: Goodbye Rohit.
+2026-07-27 14:45:24 - INFO - Imported existing <module 'comtypes.gen' from 'C:\\Users\\Rohit Prajapati\\OneDrive\\Desktop\\Jarvis-AI\\venv\\Lib\\site-packages\\comtypes\\gen\\__init__.py'>
+2026-07-27 14:45:24 - INFO - Using writeable comtypes cache directory: 'C:\Users\Rohit Prajapati\OneDrive\Desktop\Jarvis-AI\venv\Lib\site-packages\comtypes\gen'
+2026-07-27 14:45:31 - INFO - Jarvis application starting.
+2026-07-27 14:45:31 - INFO - Jarvis: Jarvis is online and ready to help you.
+2026-07-27 14:45:38 - INFO - User: jarvis
+2026-07-27 14:45:38 - INFO - Wake word detected: jarvis
+2026-07-27 14:45:38 - INFO - Jarvis: Yes Sir.
+2026-07-27 14:45:39 - INFO - Jarvis: I'm listening.
+2026-07-27 14:45:47 - ERROR - UnknownValueError: Speech not recognized.
+2026-07-27 14:45:50 - INFO - User: jarvis
+2026-07-27 14:45:50 - INFO - Executing Command: jarvis
+2026-07-27 14:45:50 - INFO - Command saved to history: jarvis
+2026-07-27 14:45:50 - INFO - Sending unknown command to AI: jarvis
+2026-07-27 14:45:50 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-27 14:45:53 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-07-27 14:45:53 - INFO - AI Question: jarvis
+2026-07-27 14:45:53 - INFO - AI Answer: At your service. How can I help you today?
+2026-07-27 14:45:53 - INFO - Jarvis: At your service. How can I help you today?
+2026-07-27 14:45:59 - INFO - User: open youtube
+2026-07-27 14:45:59 - INFO - Executing Command: open youtube
+2026-07-27 14:45:59 - INFO - Command saved to history: open youtube
+2026-07-27 14:45:59 - INFO - Jarvis: Opening YouTube
+2026-07-27 14:46:07 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-27 14:46:14 - ERROR - WaitTimeoutError: No speech detected.
+2026-07-27 14:46:17 - INFO - Jarvis stopped by user.
+2026-07-27 14:46:17 - INFO - Jarvis: Goodbye Rohit.
