@@ -1,11 +1,12 @@
 """
 api/index.py
 ------------
-Jarvis AI Assistant
+Jarvis AI Assistant Web App
 Flask + Google Gemini + Vercel
 """
 
 import os
+
 from flask import Flask, jsonify, render_template_string, request
 from google import genai
 
@@ -18,7 +19,7 @@ app = Flask(__name__)
 
 
 # ============================================================
-# WEB PAGE
+# WEB INTERFACE
 # ============================================================
 
 HTML = """
@@ -41,7 +42,6 @@ HTML = """
 
     <title>Jarvis AI Assistant</title>
 
-
     <style>
 
         * {
@@ -50,9 +50,7 @@ HTML = """
             box-sizing: border-box;
         }
 
-
         body {
-
             min-height: 100vh;
 
             background:
@@ -71,9 +69,7 @@ HTML = """
                 sans-serif;
         }
 
-
         .container {
-
             width: 92%;
             max-width: 900px;
 
@@ -88,21 +84,15 @@ HTML = """
             padding: 30px 0;
         }
 
-
         .header {
-
             text-align: center;
-
             margin-bottom: 20px;
         }
 
-
         h1 {
-
             color: #00eaff;
 
             font-size: 48px;
-
             letter-spacing: 8px;
 
             text-shadow:
@@ -111,21 +101,16 @@ HTML = """
             margin-bottom: 8px;
         }
 
-
         .subtitle {
-
             color: #8b9aaa;
-
             font-size: 16px;
         }
-
 
         /* ==================================================
            JARVIS CIRCLE
         ================================================== */
 
         .jarvis-circle {
-
             width: 145px;
             height: 145px;
 
@@ -157,7 +142,6 @@ HTML = """
                 jarvisPulse 2s ease-in-out infinite;
         }
 
-
         @keyframes jarvisPulse {
 
             0% {
@@ -173,21 +157,17 @@ HTML = """
             }
         }
 
-
         /* ==================================================
            CHAT
         ================================================== */
 
         #chat {
-
             width: 100%;
-
             height: 330px;
 
             overflow-y: auto;
 
             padding: 20px;
-
             margin-top: 15px;
 
             background:
@@ -204,25 +184,17 @@ HTML = """
             scroll-behavior: smooth;
         }
 
-
         #chat::-webkit-scrollbar {
-
             width: 7px;
         }
 
-
         #chat::-webkit-scrollbar-thumb {
-
             background: #00eaff;
-
             border-radius: 10px;
         }
 
-
         .message {
-
             padding: 12px 15px;
-
             margin-bottom: 12px;
 
             border-radius: 10px;
@@ -230,13 +202,10 @@ HTML = """
             line-height: 1.5;
 
             word-wrap: break-word;
-
             white-space: pre-wrap;
         }
 
-
         .user-message {
-
             color: white;
 
             background:
@@ -246,9 +215,7 @@ HTML = """
                 3px solid white;
         }
 
-
         .jarvis-message {
-
             color: #00eaff;
 
             background:
@@ -258,21 +225,16 @@ HTML = """
                 3px solid #00eaff;
         }
 
-
         .sender {
-
             font-weight: bold;
         }
-
 
         /* ==================================================
            INPUT
         ================================================== */
 
         .input-area {
-
             display: flex;
-
             align-items: center;
 
             gap: 10px;
@@ -280,11 +242,8 @@ HTML = """
             margin-top: 15px;
         }
 
-
         #message {
-
             flex: 1;
-
             min-width: 0;
 
             padding: 16px 20px;
@@ -303,24 +262,17 @@ HTML = """
             font-size: 16px;
         }
 
-
         #message:focus {
-
             box-shadow:
                 0 0 15px rgba(0, 234, 255, 0.35);
         }
 
-
         #message::placeholder {
-
             color: #71808d;
         }
 
-
         button {
-
             border: none;
-
             outline: none;
 
             cursor: pointer;
@@ -330,29 +282,22 @@ HTML = """
             padding: 15px 22px;
 
             background: #00eaff;
-
             color: #001018;
 
             font-weight: bold;
-
             font-size: 15px;
 
             transition: 0.2s;
         }
 
-
         button:hover {
-
-            transform:
-                translateY(-2px);
+            transform: translateY(-2px);
 
             box-shadow:
                 0 0 18px rgba(0, 234, 255, 0.60);
         }
 
-
         button:disabled {
-
             opacity: 0.5;
 
             cursor: not-allowed;
@@ -360,9 +305,7 @@ HTML = """
             transform: none;
         }
 
-
         #micButton {
-
             width: 55px;
             height: 55px;
 
@@ -371,13 +314,10 @@ HTML = """
             font-size: 21px;
         }
 
-
         #micButton.listening {
-
             animation:
                 micPulse 1s infinite;
         }
-
 
         @keyframes micPulse {
 
@@ -394,13 +334,11 @@ HTML = """
             }
         }
 
-
         /* ==================================================
            STATUS
         ================================================== */
 
         #status {
-
             margin-top: 14px;
 
             text-align: center;
@@ -410,9 +348,7 @@ HTML = """
             font-size: 14px;
         }
 
-
         .footer {
-
             text-align: center;
 
             margin-top: 15px;
@@ -422,7 +358,6 @@ HTML = """
             font-size: 12px;
         }
 
-
         /* ==================================================
            MOBILE
         ================================================== */
@@ -430,58 +365,40 @@ HTML = """
         @media (max-width: 650px) {
 
             .container {
-
                 width: 95%;
-
                 padding: 15px 0;
             }
 
-
             h1 {
-
                 font-size: 36px;
-
                 letter-spacing: 5px;
             }
 
-
             .jarvis-circle {
-
                 width: 110px;
                 height: 110px;
 
                 font-size: 40px;
             }
 
-
             #chat {
-
                 height: 350px;
-
                 padding: 15px;
             }
 
-
             .input-area {
-
                 gap: 7px;
             }
 
-
             #message {
-
                 padding: 14px 16px;
             }
-
 
             button {
-
                 padding: 14px 16px;
             }
 
-
             #micButton {
-
                 width: 50px;
                 height: 50px;
             }
@@ -541,14 +458,12 @@ HTML = """
             autocomplete="off"
         >
 
-
         <button
             id="sendButton"
             type="button"
         >
             Send
         </button>
-
 
         <button
             id="micButton"
@@ -601,8 +516,8 @@ const statusElement =
 // VOICE MODE
 // ============================================================
 
-// false = typed question
-// true = microphone question
+// false = typed command/question
+// true = microphone command/question
 
 let voiceMode = false;
 
@@ -611,15 +526,10 @@ let voiceMode = false;
 // ADD MESSAGE
 // ============================================================
 
-function addMessage(
-    sender,
-    text,
-    type
-) {
+function addMessage(sender, text, type) {
 
     const message =
         document.createElement("div");
-
 
     message.classList.add(
         "message"
@@ -644,10 +554,8 @@ function addMessage(
     const senderElement =
         document.createElement("span");
 
-
     senderElement.className =
         "sender";
-
 
     senderElement.textContent =
         sender + ": ";
@@ -655,7 +563,6 @@ function addMessage(
 
     const textElement =
         document.createElement("span");
-
 
     textElement.textContent =
         text;
@@ -665,11 +572,9 @@ function addMessage(
         senderElement
     );
 
-
     message.appendChild(
         textElement
     );
-
 
     chat.appendChild(
         message
@@ -685,98 +590,137 @@ function addMessage(
 
 
 // ============================================================
+// CLEAN COMMAND
+// ============================================================
+
+function cleanCommand(text) {
+
+    return text
+        .toLowerCase()
+        .replace(/jarvis/g, "")
+        .replace(/please/g, "")
+        .replace(/[.,!?]/g, "")
+        .trim();
+}
+
+
+// ============================================================
 // WEBSITE COMMANDS
 // ============================================================
 
-function handleWebsiteCommand(
-    userMessage
-) {
+function getWebsiteCommand(userMessage) {
 
-    let command =
-        userMessage
-            .toLowerCase()
-            .trim();
-
-
-    // Remove common polite words.
-
-    command =
-        command.replace(
-            /please/g,
-            ""
+    const command =
+        cleanCommand(
+            userMessage
         );
-
-
-    command =
-        command.replace(
-            /jarvis/g,
-            ""
-        );
-
-
-    command =
-        command.trim();
 
 
     const websites = {
 
-        "youtube":
-            "https://www.youtube.com",
+        youtube: {
+            url:
+                "https://www.youtube.com",
+            label:
+                "YouTube"
+        },
 
-        "google":
-            "https://www.google.com",
+        google: {
+            url:
+                "https://www.google.com",
+            label:
+                "Google"
+        },
 
-        "gmail":
-            "https://mail.google.com",
+        gmail: {
+            url:
+                "https://mail.google.com",
+            label:
+                "Gmail"
+        },
 
-        "github":
-            "https://github.com",
+        github: {
+            url:
+                "https://github.com",
+            label:
+                "GitHub"
+        },
 
-        "linkedin":
-            "https://www.linkedin.com",
+        linkedin: {
+            url:
+                "https://www.linkedin.com",
+            label:
+                "LinkedIn"
+        },
 
-        "instagram":
-            "https://www.instagram.com",
+        instagram: {
+            url:
+                "https://www.instagram.com",
+            label:
+                "Instagram"
+        },
 
-        "facebook":
-            "https://www.facebook.com",
+        facebook: {
+            url:
+                "https://www.facebook.com",
+            label:
+                "Facebook"
+        },
 
-        "spotify":
-            "https://open.spotify.com"
+        spotify: {
+            url:
+                "https://open.spotify.com",
+            label:
+                "Spotify"
+        }
 
     };
 
 
+    /*
+        Handle possible speech recognition
+        versions of YouTube.
+    */
+
+    let normalizedCommand =
+        command
+            .replace(
+                /you tube/g,
+                "youtube"
+            )
+            .replace(
+                /u tube/g,
+                "youtube"
+            );
+
+
     for (
-        const [name, url]
+        const [name, website]
         of Object.entries(websites)
     ) {
 
-
-        const openCommand =
-            "open " + name;
-
-
-        const launchCommand =
-            "launch " + name;
-
-
         if (
-            command.includes(openCommand) ||
-            command.includes(launchCommand)
+            normalizedCommand.includes(
+                "open " + name
+            ) ||
+            normalizedCommand.includes(
+                "launch " + name
+            )
         ) {
-
 
             return {
 
                 handled: true,
 
-                name: name,
+                url:
+                    website.url,
 
-                url: url,
+                label:
+                    website.label,
 
                 message:
-                    "Opening " + name
+                    "Opening " +
+                    website.label
 
             };
 
@@ -786,74 +730,75 @@ function handleWebsiteCommand(
 
 
     return {
-
         handled: false
-
     };
 }
 
 
 // ============================================================
-// OPEN WEBSITE
+// WEBSITE NAVIGATION
 // ============================================================
 
-function openWebsiteCommand(
-    userMessage,
+function openWebsite(
+    website,
     shouldSpeak
 ) {
 
-    const result =
-        handleWebsiteCommand(
-            userMessage
-        );
-
-
-    if (!result.handled) {
-
-        return false;
-
-    }
-
-
     addMessage(
         "Jarvis",
-        result.message + "...",
+        website.message + "...",
         "jarvis"
     );
 
 
-    statusElement.textContent =
-        "● Jarvis Online";
-
-
     /*
-        Open website.
+        IMPORTANT:
 
-        Because this runs directly from
-        a user action / microphone result,
-        modern browsers should normally
-        allow the new tab.
+        Same-tab navigation is used here.
 
-        Some browsers may still block
-        popups depending on settings.
+        Browser popup blockers can block
+        window.open() after microphone
+        recognition.
+
+        window.location.href is more
+        reliable.
     */
-
-    window.open(
-        result.url,
-        "_blank"
-    );
 
 
     if (shouldSpeak) {
 
+        /*
+            User spoke the command.
+
+            Jarvis first says:
+            "Opening YouTube"
+
+            Then browser navigates.
+        */
+
         speakText(
-            result.message
+            website.message,
+            function() {
+
+                window.location.href =
+                    website.url;
+
+            }
         );
 
+    } else {
+
+        /*
+            User typed the command.
+
+            No speech.
+            Open immediately.
+        */
+
+        window.location.href =
+            website.url;
+
     }
-
-
-    return true;
 }
 
 
@@ -876,8 +821,7 @@ async function sendMessage() {
 
 
     /*
-        Save whether the current question
-        came from microphone.
+        Save current voice mode.
     */
 
     const shouldSpeak =
@@ -885,7 +829,7 @@ async function sendMessage() {
 
 
     /*
-        Reset for the next question.
+        Reset for next message.
     */
 
     voiceMode =
@@ -906,22 +850,23 @@ async function sendMessage() {
 
 
     // ========================================================
-    // CHECK WEBSITE COMMAND FIRST
+    // WEBSITE COMMAND CHECK
     // ========================================================
 
-    const websiteHandled =
-        openWebsiteCommand(
-            userMessage,
-            shouldSpeak
+    const website =
+        getWebsiteCommand(
+            userMessage
         );
 
 
-    if (websiteHandled) {
+    if (website.handled) {
 
-        input.focus();
+        openWebsite(
+            website,
+            shouldSpeak
+        );
 
         return;
-
     }
 
 
@@ -940,7 +885,6 @@ async function sendMessage() {
     sendButton.disabled =
         true;
 
-
     micButton.disabled =
         true;
 
@@ -957,7 +901,8 @@ async function sendMessage() {
                 "/api/chat",
                 {
 
-                    method: "POST",
+                    method:
+                        "POST",
 
                     headers: {
 
@@ -969,10 +914,8 @@ async function sendMessage() {
                     body:
                         JSON.stringify(
                             {
-
                                 message:
                                     userMessage
-
                             }
                         )
 
@@ -990,10 +933,10 @@ async function sendMessage() {
 
         }
 
-        catch (jsonError) {
+        catch (error) {
 
             throw new Error(
-                "Invalid response from server."
+                "Invalid response from Jarvis server."
             );
 
         }
@@ -1011,22 +954,16 @@ async function sendMessage() {
 
         if (!response.ok) {
 
-
             throw new Error(
-
                 data.error ||
-
                 "Jarvis could not process the request."
-
             );
 
         }
 
 
         const reply =
-
             data.reply ||
-
             "Sorry, I couldn't generate a response.";
 
 
@@ -1041,9 +978,10 @@ async function sendMessage() {
             "● Jarvis Online";
 
 
-        // ====================================================
-        // SPEAK ONLY FOR MICROPHONE QUESTION
-        // ====================================================
+        /*
+            SPEAK ONLY WHEN USER
+            USED MICROPHONE.
+        */
 
         if (shouldSpeak) {
 
@@ -1069,14 +1007,10 @@ async function sendMessage() {
 
 
         addMessage(
-
             "Jarvis",
-
             "Error: " +
             error.message,
-
             "jarvis"
-
         );
 
 
@@ -1114,7 +1048,8 @@ async function sendMessage() {
 // ============================================================
 
 function speakText(
-    text
+    text,
+    onComplete = null
 ) {
 
 
@@ -1125,6 +1060,20 @@ function speakText(
         console.log(
             "Text-to-speech is not supported."
         );
+
+
+        /*
+            If speech isn't available,
+            still continue the requested
+            action.
+        */
+
+        if (onComplete) {
+
+            onComplete();
+
+        }
+
 
         return;
 
@@ -1166,7 +1115,8 @@ function speakText(
             function(voice) {
 
                 return (
-                    voice.lang === "en-IN"
+                    voice.lang ===
+                    "en-IN"
                 );
 
             }
@@ -1179,7 +1129,9 @@ function speakText(
 
                 return (
                     voice.lang &&
-                    voice.lang.startsWith("en")
+                    voice.lang.startsWith(
+                        "en"
+                    )
                 );
 
             }
@@ -1211,6 +1163,13 @@ function speakText(
             statusElement.textContent =
                 "● Jarvis Online";
 
+
+            if (onComplete) {
+
+                onComplete();
+
+            }
+
         };
 
 
@@ -1226,6 +1185,18 @@ function speakText(
 
             statusElement.textContent =
                 "● Jarvis Online";
+
+
+            /*
+                Continue action even if
+                speech fails.
+            */
+
+            if (onComplete) {
+
+                onComplete();
+
+            }
 
         };
 
@@ -1255,9 +1226,7 @@ function startListening() {
 
 
         alert(
-
             "Speech recognition is not supported in this browser. Please use Google Chrome."
-
         );
 
 
@@ -1266,7 +1235,10 @@ function startListening() {
     }
 
 
-    // Stop previous Jarvis speech.
+    /*
+        Stop previous speech before
+        listening again.
+    */
 
     if (
         "speechSynthesis" in window
@@ -1298,7 +1270,7 @@ function startListening() {
 
 
     // ========================================================
-    // LISTENING START
+    // START
     // ========================================================
 
     recognition.onstart =
@@ -1335,13 +1307,8 @@ function startListening() {
 
 
             /*
-                IMPORTANT:
-
                 This request came from
                 microphone.
-
-                Jarvis should therefore
-                speak the response.
             */
 
             voiceMode =
@@ -1371,11 +1338,8 @@ function startListening() {
 
 
             console.error(
-
                 "Microphone Error:",
-
                 event.error
-
             );
 
 
@@ -1460,7 +1424,7 @@ function startListening() {
 
 
     // ========================================================
-    // START
+    // START RECOGNITION
     // ========================================================
 
     try {
@@ -1475,11 +1439,8 @@ function startListening() {
 
 
         console.error(
-
             "Recognition Error:",
-
             error
-
         );
 
 
@@ -1504,7 +1465,9 @@ sendButton.addEventListener(
     function() {
 
 
-        // Typed mode.
+        /*
+            Send button = typed mode.
+        */
 
         voiceMode =
             false;
@@ -1548,7 +1511,9 @@ input.addEventListener(
             event.preventDefault();
 
 
-            // Typed mode.
+            /*
+                Enter = typed mode.
+            */
 
             voiceMode =
                 false;
@@ -1585,13 +1550,12 @@ window.addEventListener(
 
 
 </body>
-
 </html>
 """
 
 
 # ============================================================
-# HOME
+# HOME ROUTE
 # ============================================================
 
 @app.route("/")
@@ -1600,7 +1564,7 @@ def home():
 
 
 # ============================================================
-# STATUS API
+# STATUS ROUTE
 # ============================================================
 
 @app.route("/api/status", methods=["GET"])
@@ -1617,7 +1581,7 @@ def status():
 
 
 # ============================================================
-# CHAT API
+# CHAT ROUTE
 # ============================================================
 
 @app.route("/api/chat", methods=["POST"])
@@ -1626,7 +1590,7 @@ def chat():
     try:
 
         # ----------------------------------------------------
-        # GEMINI API KEY
+        # API KEY
         # ----------------------------------------------------
 
         api_key = os.environ.get(
@@ -1646,7 +1610,7 @@ def chat():
 
 
         # ----------------------------------------------------
-        # USER MESSAGE
+        # REQUEST DATA
         # ----------------------------------------------------
 
         data = request.get_json(
@@ -1719,7 +1683,7 @@ Jarvis:
 
 
         # ----------------------------------------------------
-        # GEMINI RESPONSE
+        # RESPONSE
         # ----------------------------------------------------
 
         reply = response.text
