@@ -1,49 +1,23 @@
-"""
-api/index.py
-------------
-Jarvis AI Assistant Web App
-Flask + Google Gemini + Vercel
-"""
-
 import os
 
 from flask import Flask, jsonify, render_template_string, request
 from google import genai
 
 
-# ============================================================
-# FLASK APP
-# ============================================================
-
 app = Flask(__name__)
 
 
-# ============================================================
-# WEB INTERFACE
-# ============================================================
-
-HTML = """
+HTML = r"""
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="theme-color"
-        content="#02070d"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Jarvis AI Assistant</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -52,219 +26,137 @@ HTML = """
 
         body {
             min-height: 100vh;
-
-            background:
-                radial-gradient(
-                    circle at top,
-                    #071c2c 0%,
-                    #02070d 45%,
-                    #000000 100%
-                );
-
+            background: radial-gradient(
+                circle at top,
+                #071c2c 0%,
+                #02070d 45%,
+                #000000 100%
+            );
             color: white;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .container {
             width: 92%;
-            max-width: 900px;
-
+            max-width: 950px;
             min-height: 100vh;
-
             margin: auto;
-
             display: flex;
             flex-direction: column;
             justify-content: center;
-
-            padding: 30px 0;
+            padding: 25px 0;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         h1 {
             color: #00eaff;
-
             font-size: 48px;
             letter-spacing: 8px;
-
-            text-shadow:
-                0 0 10px #00eaff;
-
-            margin-bottom: 8px;
+            text-shadow: 0 0 12px #00eaff;
         }
 
         .subtitle {
             color: #8b9aaa;
-            font-size: 16px;
+            margin-top: 8px;
         }
 
-        /* ==================================================
-           JARVIS CIRCLE
-        ================================================== */
-
         .jarvis-circle {
-            width: 145px;
-            height: 145px;
-
+            width: 135px;
+            height: 135px;
             margin: 20px auto;
+            border-radius: 50%;
+            border: 4px solid #00eaff;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
-            border-radius: 50%;
+            font-size: 50px;
 
-            border: 4px solid #00eaff;
-
-            font-size: 52px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 234, 255, 0.15),
-                    rgba(0, 0, 0, 0.5)
-                );
+            background: radial-gradient(
+                circle,
+                rgba(0, 234, 255, 0.18),
+                rgba(0, 0, 0, 0.6)
+            );
 
             box-shadow:
                 0 0 15px #00eaff,
-                0 0 35px rgba(0, 234, 255, 0.45),
-                inset 0 0 25px rgba(0, 234, 255, 0.25);
+                0 0 35px rgba(0, 234, 255, 0.45);
 
-            animation:
-                jarvisPulse 2s ease-in-out infinite;
+            animation: pulse 2s infinite;
         }
 
-        @keyframes jarvisPulse {
-
-            0% {
+        @keyframes pulse {
+            0%,
+            100% {
                 transform: scale(1);
             }
 
             50% {
                 transform: scale(1.05);
             }
-
-            100% {
-                transform: scale(1);
-            }
         }
 
-        /* ==================================================
-           CHAT
-        ================================================== */
-
         #chat {
-            width: 100%;
-            height: 330px;
-
+            height: 350px;
             overflow-y: auto;
-
             padding: 20px;
-            margin-top: 15px;
-
-            background:
-                rgba(4, 13, 22, 0.92);
-
-            border:
-                1px solid rgba(0, 234, 255, 0.20);
-
+            background: rgba(4, 13, 22, 0.94);
+            border: 1px solid rgba(0, 234, 255, 0.25);
             border-radius: 16px;
-
-            box-shadow:
-                0 0 20px rgba(0, 234, 255, 0.07);
-
             scroll-behavior: smooth;
         }
 
-        #chat::-webkit-scrollbar {
-            width: 7px;
-        }
-
-        #chat::-webkit-scrollbar-thumb {
-            background: #00eaff;
-            border-radius: 10px;
-        }
-
         .message {
-            padding: 12px 15px;
-            margin-bottom: 12px;
-
-            border-radius: 10px;
-
-            line-height: 1.5;
-
-            word-wrap: break-word;
+            padding: 14px 18px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            line-height: 1.6;
             white-space: pre-wrap;
-        }
-
-        .user-message {
-            color: white;
-
-            background:
-                rgba(255, 255, 255, 0.05);
-
-            border-left:
-                3px solid white;
+            word-break: break-word;
         }
 
         .jarvis-message {
             color: #00eaff;
+            background: rgba(0, 234, 255, 0.06);
+            border-left: 4px solid #00eaff;
+        }
 
-            background:
-                rgba(0, 234, 255, 0.05);
-
-            border-left:
-                3px solid #00eaff;
+        .user-message {
+            color: white;
+            background: rgba(255, 255, 255, 0.06);
+            border-left: 4px solid white;
         }
 
         .sender {
             font-weight: bold;
         }
 
-        /* ==================================================
-           INPUT
-        ================================================== */
-
         .input-area {
             display: flex;
             align-items: center;
-
             gap: 10px;
-
             margin-top: 15px;
         }
 
         #message {
             flex: 1;
             min-width: 0;
-
             padding: 16px 20px;
-
-            background: #07111c;
-
-            border:
-                1px solid #00eaff;
-
+            border: 1px solid #00eaff;
             border-radius: 30px;
-
-            outline: none;
-
+            background: #07111c;
             color: white;
-
+            outline: none;
             font-size: 16px;
         }
 
         #message:focus {
-            box-shadow:
-                0 0 15px rgba(0, 234, 255, 0.35);
+            box-shadow: 0 0 15px rgba(0, 234, 255, 0.35);
         }
 
         #message::placeholder {
@@ -273,181 +165,109 @@ HTML = """
 
         button {
             border: none;
-            outline: none;
-
-            cursor: pointer;
-
             border-radius: 30px;
-
             padding: 15px 22px;
-
             background: #00eaff;
             color: #001018;
-
             font-weight: bold;
             font-size: 15px;
-
+            cursor: pointer;
             transition: 0.2s;
         }
 
         button:hover {
             transform: translateY(-2px);
-
-            box-shadow:
-                0 0 18px rgba(0, 234, 255, 0.60);
+            box-shadow: 0 0 18px rgba(0, 234, 255, 0.6);
         }
 
         button:disabled {
             opacity: 0.5;
-
             cursor: not-allowed;
-
             transform: none;
         }
 
         #micButton {
             width: 55px;
             height: 55px;
-
             padding: 0;
-
             font-size: 21px;
         }
 
         #micButton.listening {
-            animation:
-                micPulse 1s infinite;
+            animation: micPulse 0.8s infinite;
         }
 
         @keyframes micPulse {
-
-            0% {
-                transform: scale(1);
-            }
-
             50% {
-                transform: scale(1.12);
-            }
-
-            100% {
-                transform: scale(1);
+                transform: scale(1.15);
             }
         }
 
-        /* ==================================================
-           STATUS
-        ================================================== */
-
         #status {
-            margin-top: 14px;
-
             text-align: center;
-
+            margin-top: 13px;
             color: #00ff88;
-
-            font-size: 14px;
         }
 
         .footer {
             text-align: center;
-
-            margin-top: 15px;
-
+            margin-top: 12px;
             color: #53616d;
-
             font-size: 12px;
         }
 
-        /* ==================================================
-           MOBILE
-        ================================================== */
-
         @media (max-width: 650px) {
-
             .container {
                 width: 95%;
-                padding: 15px 0;
             }
 
             h1 {
                 font-size: 36px;
-                letter-spacing: 5px;
             }
 
             .jarvis-circle {
-                width: 110px;
-                height: 110px;
-
+                width: 105px;
+                height: 105px;
                 font-size: 40px;
             }
 
             #chat {
-                height: 350px;
-                padding: 15px;
-            }
-
-            .input-area {
-                gap: 7px;
+                height: 390px;
+                padding: 14px;
             }
 
             #message {
-                padding: 14px 16px;
+                padding: 14px;
             }
 
             button {
-                padding: 14px 16px;
-            }
-
-            #micButton {
-                width: 50px;
-                height: 50px;
+                padding: 14px;
             }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
 <div class="container">
 
-
     <div class="header">
-
         <h1>JARVIS</h1>
-
-        <p class="subtitle">
+        <div class="subtitle">
             AI Assistant • Powered by Gemini
-        </p>
-
+        </div>
     </div>
 
-
-    <div
-        class="jarvis-circle"
-        id="jarvisCircle"
-    >
+    <div class="jarvis-circle">
         🤖
     </div>
 
-
     <div id="chat">
-
         <div class="message jarvis-message">
-
-            <span class="sender">
-                Jarvis:
-            </span>
-
-            Hello! I'm Jarvis. How can I help you?
-
+            <span class="sender">Jarvis: </span>
+            Hello! I am Jarvis, your AI assistant. How can I help you today?
         </div>
-
     </div>
-
 
     <div class="input-area">
 
@@ -458,66 +278,34 @@ HTML = """
             autocomplete="off"
         >
 
-        <button
-            id="sendButton"
-            type="button"
-        >
+        <button id="sendButton" type="button">
             Send
         </button>
 
-        <button
-            id="micButton"
-            type="button"
-            title="Talk to Jarvis"
-        >
+        <button id="micButton" type="button" title="Speak to Jarvis">
             🎤
         </button>
 
     </div>
 
-
     <div id="status">
         ● Jarvis Online
     </div>
 
-
     <div class="footer">
-        Jarvis AI Assistant • Gemini
+        Jarvis AI Assistant
     </div>
-
 
 </div>
 
 
 <script>
 
-
-// ============================================================
-// ELEMENTS
-// ============================================================
-
-const input =
-    document.getElementById("message");
-
-const chat =
-    document.getElementById("chat");
-
-const sendButton =
-    document.getElementById("sendButton");
-
-const micButton =
-    document.getElementById("micButton");
-
-const statusElement =
-    document.getElementById("status");
-
-
-// ============================================================
-// VOICE MODE
-// ============================================================
-
-// false = typed command/question
-// true = microphone command/question
+const input = document.getElementById("message");
+const chat = document.getElementById("chat");
+const sendButton = document.getElementById("sendButton");
+const micButton = document.getElementById("micButton");
+const statusElement = document.getElementById("status");
 
 let voiceMode = false;
 
@@ -528,204 +316,293 @@ let voiceMode = false;
 
 function addMessage(sender, text, type) {
 
-    const message =
-        document.createElement("div");
-
-    message.classList.add(
-        "message"
-    );
-
+    const box = document.createElement("div");
 
     if (type === "user") {
-
-        message.classList.add(
-            "user-message"
-        );
-
+        box.className = "message user-message";
     } else {
-
-        message.classList.add(
-            "jarvis-message"
-        );
-
+        box.className = "message jarvis-message";
     }
 
+    const senderSpan = document.createElement("span");
+    senderSpan.className = "sender";
+    senderSpan.textContent = sender + ": ";
 
-    const senderElement =
-        document.createElement("span");
+    const textSpan = document.createElement("span");
+    textSpan.textContent = text;
 
-    senderElement.className =
-        "sender";
+    box.appendChild(senderSpan);
+    box.appendChild(textSpan);
 
-    senderElement.textContent =
-        sender + ": ";
+    chat.appendChild(box);
 
+    chat.scrollTop = chat.scrollHeight;
 
-    const textElement =
-        document.createElement("span");
-
-    textElement.textContent =
-        text;
-
-
-    message.appendChild(
-        senderElement
-    );
-
-    message.appendChild(
-        textElement
-    );
-
-    chat.appendChild(
-        message
-    );
-
-
-    chat.scrollTop =
-        chat.scrollHeight;
-
-
-    return message;
+    return box;
 }
 
 
 // ============================================================
-// CLEAN COMMAND
+// NORMALIZE COMMAND
 // ============================================================
 
-function cleanCommand(text) {
+function normalizeCommand(text) {
 
     return text
         .toLowerCase()
-        .replace(/jarvis/g, "")
-        .replace(/please/g, "")
         .replace(/[.,!?]/g, "")
+        .replace(/\bjarvis\b/g, "")
+        .replace(/\bplease\b/g, "")
+        .replace(/\byou tube\b/g, "youtube")
+        .replace(/\bu tube\b/g, "youtube")
+        .replace(/\blinked in\b/g, "linkedin")
+        .replace(/\bface book\b/g, "facebook")
+        .replace(/\binsta gram\b/g, "instagram")
+        .replace(/\s+/g, " ")
         .trim();
 }
 
 
 // ============================================================
-// WEBSITE COMMANDS
+// WEBSITE LIST
 // ============================================================
 
-function getWebsiteCommand(userMessage) {
+const websites = {
 
-    const command =
-        cleanCommand(
-            userMessage
-        );
+    youtube: {
+        label: "YouTube",
+        url: "https://www.youtube.com"
+    },
 
+    google: {
+        label: "Google",
+        url: "https://www.google.com"
+    },
 
-    const websites = {
+    gmail: {
+        label: "Gmail",
+        url: "https://mail.google.com"
+    },
 
-        youtube: {
-            url:
-                "https://www.youtube.com",
-            label:
-                "YouTube"
-        },
+    github: {
+        label: "GitHub",
+        url: "https://github.com"
+    },
 
-        google: {
-            url:
-                "https://www.google.com",
-            label:
-                "Google"
-        },
+    linkedin: {
+        label: "LinkedIn",
+        url: "https://www.linkedin.com"
+    },
 
-        gmail: {
-            url:
-                "https://mail.google.com",
-            label:
-                "Gmail"
-        },
+    instagram: {
+        label: "Instagram",
+        url: "https://www.instagram.com"
+    },
 
-        github: {
-            url:
-                "https://github.com",
-            label:
-                "GitHub"
-        },
+    facebook: {
+        label: "Facebook",
+        url: "https://www.facebook.com"
+    },
 
-        linkedin: {
-            url:
-                "https://www.linkedin.com",
-            label:
-                "LinkedIn"
-        },
+    spotify: {
+        label: "Spotify",
+        url: "https://open.spotify.com"
+    },
 
-        instagram: {
-            url:
-                "https://www.instagram.com",
-            label:
-                "Instagram"
-        },
+    wikipedia: {
+        label: "Wikipedia",
+        url: "https://www.wikipedia.org"
+    },
 
-        facebook: {
-            url:
-                "https://www.facebook.com",
-            label:
-                "Facebook"
-        },
-
-        spotify: {
-            url:
-                "https://open.spotify.com",
-            label:
-                "Spotify"
-        }
-
-    };
+    whatsapp: {
+        label: "WhatsApp",
+        url: "https://web.whatsapp.com"
+    }
+};
 
 
-    /*
-        Handle possible speech recognition
-        versions of YouTube.
-    */
+// ============================================================
+// DETECT COMMAND
+// ============================================================
 
-    let normalizedCommand =
-        command
-            .replace(
-                /you tube/g,
-                "youtube"
-            )
-            .replace(
-                /u tube/g,
-                "youtube"
-            );
+function detectCommand(userMessage) {
+
+    const command = normalizeCommand(userMessage);
 
 
-    for (
-        const [name, website]
-        of Object.entries(websites)
-    ) {
+    // --------------------------------------------------------
+    // OPEN WEBSITE
+    // --------------------------------------------------------
+
+    for (const [name, website] of Object.entries(websites)) {
 
         if (
-            normalizedCommand.includes(
-                "open " + name
-            ) ||
-            normalizedCommand.includes(
-                "launch " + name
-            )
+            command === "open " + name ||
+            command === "launch " + name ||
+            command === "start " + name ||
+            command.includes("open " + name)
         ) {
 
             return {
-
                 handled: true,
-
-                url:
-                    website.url,
-
-                label:
-                    website.label,
-
-                message:
-                    "Opening " +
-                    website.label
-
+                type: "navigate",
+                url: website.url,
+                response: "Opening " + website.label
             };
+        }
+    }
 
+
+    // --------------------------------------------------------
+    // PLAY SOMETHING ON YOUTUBE
+    // --------------------------------------------------------
+
+    if (command.startsWith("play ")) {
+
+        const query = command.substring(5).trim();
+
+        if (!query) {
+
+            return {
+                handled: true,
+                type: "message",
+                response: "Tell me what you want me to play."
+            };
         }
 
+        return {
+            handled: true,
+            type: "navigate",
+            url:
+                "https://www.youtube.com/results?search_query=" +
+                encodeURIComponent(query),
+            response:
+                "Searching YouTube for " + query
+        };
+    }
+
+
+    // --------------------------------------------------------
+    // SEARCH YOUTUBE FOR
+    // --------------------------------------------------------
+
+    if (command.startsWith("search youtube for ")) {
+
+        const query = command
+            .replace("search youtube for ", "")
+            .trim();
+
+        if (query) {
+
+            return {
+                handled: true,
+                type: "navigate",
+                url:
+                    "https://www.youtube.com/results?search_query=" +
+                    encodeURIComponent(query),
+                response:
+                    "Searching YouTube for " + query
+            };
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // SEARCH ON YOUTUBE
+    // --------------------------------------------------------
+
+    if (command.startsWith("search on youtube ")) {
+
+        const query = command
+            .replace("search on youtube ", "")
+            .trim();
+
+        if (query) {
+
+            return {
+                handled: true,
+                type: "navigate",
+                url:
+                    "https://www.youtube.com/results?search_query=" +
+                    encodeURIComponent(query),
+                response:
+                    "Searching YouTube for " + query
+            };
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // SEARCH GOOGLE FOR
+    // --------------------------------------------------------
+
+    if (command.startsWith("search google for ")) {
+
+        const query = command
+            .replace("search google for ", "")
+            .trim();
+
+        if (query) {
+
+            return {
+                handled: true,
+                type: "navigate",
+                url:
+                    "https://www.google.com/search?q=" +
+                    encodeURIComponent(query),
+                response:
+                    "Searching Google for " + query
+            };
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // SEARCH ON GOOGLE
+    // --------------------------------------------------------
+
+    if (command.startsWith("search on google ")) {
+
+        const query = command
+            .replace("search on google ", "")
+            .trim();
+
+        if (query) {
+
+            return {
+                handled: true,
+                type: "navigate",
+                url:
+                    "https://www.google.com/search?q=" +
+                    encodeURIComponent(query),
+                response:
+                    "Searching Google for " + query
+            };
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // GOOGLE SOMETHING
+    // Example: google machine learning
+    // --------------------------------------------------------
+
+    if (command.startsWith("google ")) {
+
+        const query = command.substring(7).trim();
+
+        if (query) {
+
+            return {
+                handled: true,
+                type: "navigate",
+                url:
+                    "https://www.google.com/search?q=" +
+                    encodeURIComponent(query),
+                response:
+                    "Searching Google for " + query
+            };
+        }
     }
 
 
@@ -736,68 +613,107 @@ function getWebsiteCommand(userMessage) {
 
 
 // ============================================================
-// WEBSITE NAVIGATION
+// TEXT TO SPEECH
 // ============================================================
 
-function openWebsite(
-    website,
-    shouldSpeak
-) {
+function speakText(text, onComplete = null) {
+
+    if (!("speechSynthesis" in window)) {
+
+        if (onComplete) {
+            onComplete();
+        }
+
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "en-IN";
+    speech.rate = 1;
+    speech.pitch = 1;
+    speech.volume = 1;
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const preferredVoice =
+        voices.find(function(voice) {
+            return voice.lang === "en-IN";
+        }) ||
+        voices.find(function(voice) {
+            return voice.lang && voice.lang.startsWith("en");
+        });
+
+    if (preferredVoice) {
+        speech.voice = preferredVoice;
+    }
+
+    speech.onstart = function() {
+        statusElement.textContent = "🔊 Jarvis is speaking...";
+    };
+
+    speech.onend = function() {
+
+        statusElement.textContent = "● Jarvis Online";
+
+        if (onComplete) {
+            onComplete();
+        }
+    };
+
+    speech.onerror = function() {
+
+        statusElement.textContent = "● Jarvis Online";
+
+        if (onComplete) {
+            onComplete();
+        }
+    };
+
+    window.speechSynthesis.speak(speech);
+}
+
+
+// ============================================================
+// EXECUTE COMMAND
+// ============================================================
+
+function executeCommand(command, shouldSpeak) {
 
     addMessage(
         "Jarvis",
-        website.message + "...",
+        command.response,
         "jarvis"
     );
 
 
-    /*
-        IMPORTANT:
+    if (command.type === "message") {
 
-        Same-tab navigation is used here.
+        if (shouldSpeak) {
+            speakText(command.response);
+        }
 
-        Browser popup blockers can block
-        window.open() after microphone
-        recognition.
-
-        window.location.href is more
-        reliable.
-    */
+        return;
+    }
 
 
-    if (shouldSpeak) {
+    if (command.type === "navigate") {
 
-        /*
-            User spoke the command.
+        if (shouldSpeak) {
 
-            Jarvis first says:
-            "Opening YouTube"
+            speakText(
+                command.response,
+                function() {
+                    window.location.href = command.url;
+                }
+            );
 
-            Then browser navigates.
-        */
+        } else {
 
-        speakText(
-            website.message,
-            function() {
-
-                window.location.href =
-                    website.url;
-
-            }
-        );
-
-    } else {
-
-        /*
-            User typed the command.
-
-            No speech.
-            Open immediately.
-        */
-
-        window.location.href =
-            website.url;
-
+            window.location.href = command.url;
+        }
     }
 }
 
@@ -808,35 +724,17 @@ function openWebsite(
 
 async function sendMessage() {
 
-
-    const userMessage =
-        input.value.trim();
-
+    const userMessage = input.value.trim();
 
     if (!userMessage) {
-
         return;
-
     }
 
 
-    /*
-        Save current voice mode.
-    */
+    const shouldSpeak = voiceMode;
 
-    const shouldSpeak =
-        voiceMode;
+    voiceMode = false;
 
-
-    /*
-        Reset for next message.
-    */
-
-    voiceMode =
-        false;
-
-
-    // Show user's message.
 
     addMessage(
         "You",
@@ -845,24 +743,19 @@ async function sendMessage() {
     );
 
 
-    input.value =
-        "";
+    input.value = "";
 
 
-    // ========================================================
-    // WEBSITE COMMAND CHECK
-    // ========================================================
+    // --------------------------------------------------------
+    // LOCAL COMMANDS FIRST
+    // --------------------------------------------------------
 
-    const website =
-        getWebsiteCommand(
-            userMessage
-        );
+    const command = detectCommand(userMessage);
 
+    if (command.handled) {
 
-    if (website.handled) {
-
-        openWebsite(
-            website,
+        executeCommand(
+            command,
             shouldSpeak
         );
 
@@ -870,24 +763,19 @@ async function sendMessage() {
     }
 
 
-    // ========================================================
-    // NORMAL GEMINI QUESTION
-    // ========================================================
+    // --------------------------------------------------------
+    // GEMINI QUESTION
+    // --------------------------------------------------------
 
-    const thinkingMessage =
-        addMessage(
-            "Jarvis",
-            "Thinking...",
-            "jarvis"
-        );
+    const thinking = addMessage(
+        "Jarvis",
+        "Thinking...",
+        "jarvis"
+    );
 
 
-    sendButton.disabled =
-        true;
-
-    micButton.disabled =
-        true;
-
+    sendButton.disabled = true;
+    micButton.disabled = true;
 
     statusElement.textContent =
         "◌ Jarvis is thinking...";
@@ -895,60 +783,38 @@ async function sendMessage() {
 
     try {
 
+        const response = await fetch(
+            "/api/chat",
+            {
+                method: "POST",
 
-        const response =
-            await fetch(
-                "/api/chat",
-                {
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "application/json"
-
-                    },
-
-                    body:
-                        JSON.stringify(
-                            {
-                                message:
-                                    userMessage
-                            }
-                        )
-
-                }
-            );
+                body: JSON.stringify({
+                    message: userMessage
+                })
+            }
+        );
 
 
         let data;
 
-
         try {
 
-            data =
-                await response.json();
+            data = await response.json();
 
-        }
-
-        catch (error) {
+        } catch (error) {
 
             throw new Error(
                 "Invalid response from Jarvis server."
             );
-
         }
 
 
-        if (
-            thinkingMessage &&
-            thinkingMessage.isConnected
-        ) {
-
-            thinkingMessage.remove();
-
+        if (thinking && thinking.isConnected) {
+            thinking.remove();
         }
 
 
@@ -958,13 +824,12 @@ async function sendMessage() {
                 data.error ||
                 "Jarvis could not process the request."
             );
-
         }
 
 
         const reply =
             data.reply ||
-            "Sorry, I couldn't generate a response.";
+            "Sorry, I could not generate an answer.";
 
 
         addMessage(
@@ -978,38 +843,29 @@ async function sendMessage() {
             "● Jarvis Online";
 
 
-        /*
-            SPEAK ONLY WHEN USER
-            USED MICROPHONE.
-        */
+        // Speak ONLY if microphone was used.
 
         if (shouldSpeak) {
-
-            speakText(
-                reply
-            );
-
+            speakText(reply);
         }
 
-    }
 
-    catch (error) {
+    } catch (error) {
 
-
-        if (
-            thinkingMessage &&
-            thinkingMessage.isConnected
-        ) {
-
-            thinkingMessage.remove();
-
+        if (thinking && thinking.isConnected) {
+            thinking.remove();
         }
+
+
+        console.error(
+            "Jarvis Error:",
+            error
+        );
 
 
         addMessage(
             "Jarvis",
-            "Error: " +
-            error.message,
+            "Error: " + error.message,
             "jarvis"
         );
 
@@ -1018,193 +874,13 @@ async function sendMessage() {
             "● Jarvis Online";
 
 
-        console.error(
-            "Jarvis Error:",
-            error
-        );
+    } finally {
 
-    }
-
-    finally {
-
-
-        sendButton.disabled =
-            false;
-
-
-        micButton.disabled =
-            false;
-
+        sendButton.disabled = false;
+        micButton.disabled = false;
 
         input.focus();
-
     }
-
-}
-
-
-// ============================================================
-// TEXT TO SPEECH
-// ============================================================
-
-function speakText(
-    text,
-    onComplete = null
-) {
-
-
-    if (
-        !("speechSynthesis" in window)
-    ) {
-
-        console.log(
-            "Text-to-speech is not supported."
-        );
-
-
-        /*
-            If speech isn't available,
-            still continue the requested
-            action.
-        */
-
-        if (onComplete) {
-
-            onComplete();
-
-        }
-
-
-        return;
-
-    }
-
-
-    window.speechSynthesis.cancel();
-
-
-    const speech =
-        new SpeechSynthesisUtterance(
-            text
-        );
-
-
-    speech.lang =
-        "en-IN";
-
-
-    speech.rate =
-        1;
-
-
-    speech.pitch =
-        1;
-
-
-    speech.volume =
-        1;
-
-
-    const voices =
-        window.speechSynthesis.getVoices();
-
-
-    const preferredVoice =
-
-        voices.find(
-            function(voice) {
-
-                return (
-                    voice.lang ===
-                    "en-IN"
-                );
-
-            }
-        )
-
-        ||
-
-        voices.find(
-            function(voice) {
-
-                return (
-                    voice.lang &&
-                    voice.lang.startsWith(
-                        "en"
-                    )
-                );
-
-            }
-        );
-
-
-    if (preferredVoice) {
-
-        speech.voice =
-            preferredVoice;
-
-    }
-
-
-    speech.onstart =
-        function() {
-
-
-            statusElement.textContent =
-                "🔊 Jarvis is speaking...";
-
-        };
-
-
-    speech.onend =
-        function() {
-
-
-            statusElement.textContent =
-                "● Jarvis Online";
-
-
-            if (onComplete) {
-
-                onComplete();
-
-            }
-
-        };
-
-
-    speech.onerror =
-        function(event) {
-
-
-            console.error(
-                "Speech Error:",
-                event
-            );
-
-
-            statusElement.textContent =
-                "● Jarvis Online";
-
-
-            /*
-                Continue action even if
-                speech fails.
-            */
-
-            if (onComplete) {
-
-                onComplete();
-
-            }
-
-        };
-
-
-    window.speechSynthesis.speak(
-        speech
-    );
-
 }
 
 
@@ -1214,38 +890,23 @@ function speakText(
 
 function startListening() {
 
-
     const SpeechRecognition =
-
         window.SpeechRecognition ||
-
         window.webkitSpeechRecognition;
 
 
     if (!SpeechRecognition) {
 
-
         alert(
             "Speech recognition is not supported in this browser. Please use Google Chrome."
         );
 
-
         return;
-
     }
 
 
-    /*
-        Stop previous speech before
-        listening again.
-    */
-
-    if (
-        "speechSynthesis" in window
-    ) {
-
+    if ("speechSynthesis" in window) {
         window.speechSynthesis.cancel();
-
     }
 
 
@@ -1253,301 +914,175 @@ function startListening() {
         new SpeechRecognition();
 
 
-    recognition.lang =
-        "en-IN";
+    recognition.lang = "en-IN";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
 
 
-    recognition.continuous =
-        false;
+    recognition.onstart = function() {
 
+        micButton.classList.add(
+            "listening"
+        );
 
-    recognition.interimResults =
-        false;
+        statusElement.textContent =
+            "🎤 Listening...";
+    };
 
 
-    recognition.maxAlternatives =
-        1;
+    recognition.onresult = function(event) {
 
+        const transcript =
+            event.results[0][0].transcript;
 
-    // ========================================================
-    // START
-    // ========================================================
 
-    recognition.onstart =
-        function() {
+        input.value = transcript;
 
+        voiceMode = true;
 
-            statusElement.textContent =
-                "🎤 Listening...";
 
-
-            micButton.classList.add(
-                "listening"
-            );
-
-        };
-
-
-    // ========================================================
-    // RESULT
-    // ========================================================
-
-    recognition.onresult =
-        function(event) {
-
-
-            const transcript =
-
-                event.results[0][0]
-                    .transcript;
-
-
-            input.value =
-                transcript;
-
-
-            /*
-                This request came from
-                microphone.
-            */
-
-            voiceMode =
-                true;
-
-
-            statusElement.textContent =
-                "◌ Processing voice...";
-
-
-            micButton.classList.remove(
-                "listening"
-            );
-
-
-            sendMessage();
-
-        };
-
-
-    // ========================================================
-    // ERROR
-    // ========================================================
-
-    recognition.onerror =
-        function(event) {
-
-
-            console.error(
-                "Microphone Error:",
-                event.error
-            );
-
-
-            voiceMode =
-                false;
-
-
-            micButton.classList.remove(
-                "listening"
-            );
-
-
-            if (
-                event.error ===
-                "not-allowed"
-            ) {
-
-
-                statusElement.textContent =
-                    "❌ Microphone permission denied";
-
-            }
-
-            else if (
-                event.error ===
-                "no-speech"
-            ) {
-
-
-                statusElement.textContent =
-                    "🎤 No speech detected";
-
-            }
-
-            else if (
-                event.error ===
-                "audio-capture"
-            ) {
-
-
-                statusElement.textContent =
-                    "❌ Microphone not available";
-
-            }
-
-            else {
-
-
-                statusElement.textContent =
-                    "● Jarvis Online";
-
-            }
-
-        };
-
-
-    // ========================================================
-    // END
-    // ========================================================
-
-    recognition.onend =
-        function() {
-
-
-            micButton.classList.remove(
-                "listening"
-            );
-
-
-            if (
-                statusElement.textContent ===
-                "🎤 Listening..."
-            ) {
-
-
-                statusElement.textContent =
-                    "● Jarvis Online";
-
-            }
-
-        };
-
-
-    // ========================================================
-    // START RECOGNITION
-    // ========================================================
-
-    try {
-
-
-        recognition.start();
-
-
-    }
-
-    catch (error) {
-
-
-        console.error(
-            "Recognition Error:",
-            error
+        micButton.classList.remove(
+            "listening"
         );
 
 
-        voiceMode =
-            false;
+        statusElement.textContent =
+            "◌ Processing voice...";
 
+
+        sendMessage();
+    };
+
+
+    recognition.onerror = function(event) {
+
+        console.error(
+            "Speech recognition error:",
+            event.error
+        );
+
+
+        voiceMode = false;
+
+
+        micButton.classList.remove(
+            "listening"
+        );
+
+
+        if (event.error === "not-allowed") {
+
+            statusElement.textContent =
+                "❌ Microphone permission denied";
+
+        } else if (event.error === "no-speech") {
+
+            statusElement.textContent =
+                "🎤 No speech detected";
+
+        } else if (event.error === "audio-capture") {
+
+            statusElement.textContent =
+                "❌ Microphone not available";
+
+        } else {
+
+            statusElement.textContent =
+                "● Jarvis Online";
+        }
+    };
+
+
+    recognition.onend = function() {
+
+        micButton.classList.remove(
+            "listening"
+        );
+
+
+        if (
+            statusElement.textContent ===
+            "🎤 Listening..."
+        ) {
+
+            statusElement.textContent =
+                "● Jarvis Online";
+        }
+    };
+
+
+    try {
+
+        recognition.start();
+
+    } catch (error) {
+
+        console.error(
+            "Recognition error:",
+            error
+        );
+
+        voiceMode = false;
 
         statusElement.textContent =
             "● Jarvis Online";
-
     }
-
 }
 
 
 // ============================================================
-// SEND BUTTON
+// BUTTON EVENTS
 // ============================================================
 
 sendButton.addEventListener(
     "click",
     function() {
 
-
-        /*
-            Send button = typed mode.
-        */
-
-        voiceMode =
-            false;
-
+        voiceMode = false;
 
         sendMessage();
-
     }
 );
 
-
-// ============================================================
-// MICROPHONE BUTTON
-// ============================================================
 
 micButton.addEventListener(
     "click",
     function() {
 
-
         startListening();
-
     }
 );
 
-
-// ============================================================
-// ENTER KEY
-// ============================================================
 
 input.addEventListener(
     "keydown",
     function(event) {
 
-
-        if (
-            event.key === "Enter"
-        ) {
-
+        if (event.key === "Enter") {
 
             event.preventDefault();
 
-
-            /*
-                Enter = typed mode.
-            */
-
-            voiceMode =
-                false;
-
+            voiceMode = false;
 
             sendMessage();
-
         }
-
     }
 );
 
-
-// ============================================================
-// PAGE LOAD
-// ============================================================
 
 window.addEventListener(
     "load",
     function() {
 
-
         input.focus();
-
 
         statusElement.textContent =
             "● Jarvis Online";
-
     }
 );
 
-
 </script>
-
 
 </body>
 </html>
@@ -1569,7 +1104,6 @@ def home():
 
 @app.route("/api/status", methods=["GET"])
 def status():
-
     return jsonify(
         {
             "success": True,
@@ -1586,138 +1120,93 @@ def status():
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
-
     try:
-
-        # ----------------------------------------------------
-        # API KEY
-        # ----------------------------------------------------
-
-        api_key = os.environ.get(
-            "GEMINI_API_KEY"
-        )
-
+        api_key = os.environ.get("GEMINI_API_KEY")
 
         if not api_key:
-
             return jsonify(
                 {
                     "success": False,
-                    "error":
-                        "GEMINI_API_KEY is not configured.",
+                    "error": "GEMINI_API_KEY is missing from Vercel.",
                 }
             ), 500
 
-
-        # ----------------------------------------------------
-        # REQUEST DATA
-        # ----------------------------------------------------
-
-        data = request.get_json(
-            silent=True
-        ) or {}
-
+        data = request.get_json(silent=True) or {}
 
         message = str(
-            data.get(
-                "message",
-                ""
-            )
+            data.get("message", "")
         ).strip()
 
-
         if not message:
-
             return jsonify(
                 {
                     "success": False,
-                    "error":
-                        "Please enter a message.",
+                    "error": "Please enter a message.",
                 }
             ), 400
-
-
-        # ----------------------------------------------------
-        # GEMINI CLIENT
-        # ----------------------------------------------------
 
         client = genai.Client(
             api_key=api_key
         )
 
-
-        # ----------------------------------------------------
-        # JARVIS PROMPT
-        # ----------------------------------------------------
-
         prompt = f"""
-You are Jarvis, an intelligent AI assistant.
+You are Jarvis, a smart AI assistant.
 
 Your name is Jarvis.
 
-Instructions:
-- Answer the user's question clearly.
-- Be helpful, friendly, and professional.
-- Keep simple questions concise.
-- Give detailed explanations when necessary.
-- If the user asks a programming question, provide useful code and explanation.
-- Communicate naturally in English, Hindi, or Hinglish depending on the user's language.
-- Format answers so they are easy to read.
-- Do not claim that you physically control the user's computer or devices.
+Rules:
+1. Answer the user's actual question directly.
+2. Keep simple answers concise and clear.
+3. Explain complicated topics when necessary.
+4. For programming questions, provide correct and useful code.
+5. You can communicate in English, Hindi, or Hinglish.
+6. Match the user's language when possible.
+7. Be helpful and conversational.
+8. Do not claim that you physically control the user's computer.
+9. Avoid unnecessary introductions.
 
-User:
+User message:
 {message}
 
 Jarvis:
 """
-
-
-        # ----------------------------------------------------
-        # GEMINI REQUEST
-        # ----------------------------------------------------
 
         response = client.models.generate_content(
             model="gemini-3.6-flash",
             contents=prompt,
         )
 
-
-        # ----------------------------------------------------
-        # RESPONSE
-        # ----------------------------------------------------
-
-        reply = response.text
-
+        reply = getattr(
+            response,
+            "text",
+            None,
+        )
 
         if not reply:
-
-            reply = (
-                "Sorry, I couldn't generate "
-                "a response for that."
-            )
-
+            return jsonify(
+                {
+                    "success": False,
+                    "error": "Gemini returned an empty response.",
+                }
+            ), 502
 
         return jsonify(
             {
                 "success": True,
-                "reply": reply,
+                "reply": reply.strip(),
             }
         )
 
-
     except Exception as error:
-
         print(
             "Jarvis Gemini Error:",
-            repr(error)
+            repr(error),
         )
-
 
         return jsonify(
             {
                 "success": False,
-                "error":
-                    "Jarvis could not process the request.",
+                "error": "Jarvis could not process the request.",
             }
         ), 500
 
@@ -1727,7 +1216,6 @@ Jarvis:
 # ============================================================
 
 if __name__ == "__main__":
-
     app.run(
         host="0.0.0.0",
         port=5000,
