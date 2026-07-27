@@ -1,8 +1,8 @@
 """
 api/index.py
 ------------
-Jarvis AI Assistant Web App
-Vercel + Flask + Google Gemini
+Jarvis AI Assistant
+Flask + Google Gemini + Vercel
 """
 
 import os
@@ -11,30 +11,22 @@ from flask import Flask, jsonify, render_template_string, request
 from google import genai
 
 
-# =========================================================
+# ============================================================
 # FLASK APP
-# =========================================================
+# ============================================================
 
 app = Flask(__name__)
 
 
-# =========================================================
-# GEMINI CONFIGURATION
-# =========================================================
-
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-
-
-# =========================================================
-# HTML / CSS / JAVASCRIPT
-# =========================================================
+# ============================================================
+# WEB PAGE
+# ============================================================
 
 HTML = """
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -93,7 +85,6 @@ HTML = """
 
         .header {
             text-align: center;
-
             margin-bottom: 20px;
         }
 
@@ -101,7 +92,6 @@ HTML = """
             color: #00eaff;
 
             font-size: 48px;
-
             letter-spacing: 8px;
 
             text-shadow:
@@ -112,14 +102,12 @@ HTML = """
 
         .subtitle {
             color: #8b9aaa;
-
             font-size: 16px;
         }
 
-
-        /* ==============================================
-           JARVIS ANIMATION
-        ============================================== */
+        /* =========================================
+           JARVIS CIRCLE
+        ========================================= */
 
         .jarvis-circle {
             width: 145px;
@@ -157,44 +145,28 @@ HTML = """
 
             0% {
                 transform: scale(1);
-
-                box-shadow:
-                    0 0 15px #00eaff,
-                    0 0 30px rgba(0, 234, 255, 0.35);
             }
 
             50% {
                 transform: scale(1.05);
-
-                box-shadow:
-                    0 0 25px #00eaff,
-                    0 0 50px rgba(0, 234, 255, 0.6);
             }
 
             100% {
                 transform: scale(1);
-
-                box-shadow:
-                    0 0 15px #00eaff,
-                    0 0 30px rgba(0, 234, 255, 0.35);
             }
-
         }
 
-
-        /* ==============================================
+        /* =========================================
            CHAT
-        ============================================== */
+        ========================================= */
 
         #chat {
             width: 100%;
-
             height: 330px;
 
             overflow-y: auto;
 
             padding: 20px;
-
             margin-top: 15px;
 
             background:
@@ -217,13 +189,11 @@ HTML = """
 
         #chat::-webkit-scrollbar-thumb {
             background: #00eaff;
-
             border-radius: 10px;
         }
 
         .message {
             padding: 12px 15px;
-
             margin-bottom: 12px;
 
             border-radius: 10px;
@@ -231,18 +201,17 @@ HTML = """
             line-height: 1.5;
 
             word-wrap: break-word;
-
             white-space: pre-wrap;
         }
 
         .user-message {
-            color: #ffffff;
+            color: white;
 
             background:
                 rgba(255, 255, 255, 0.05);
 
             border-left:
-                3px solid #ffffff;
+                3px solid white;
         }
 
         .jarvis-message {
@@ -259,14 +228,12 @@ HTML = """
             font-weight: bold;
         }
 
-
-        /* ==============================================
+        /* =========================================
            INPUT
-        ============================================== */
+        ========================================= */
 
         .input-area {
             display: flex;
-
             align-items: center;
 
             gap: 10px;
@@ -276,7 +243,6 @@ HTML = """
 
         #message {
             flex: 1;
-
             min-width: 0;
 
             padding: 16px 20px;
@@ -293,8 +259,6 @@ HTML = """
             color: white;
 
             font-size: 16px;
-
-            transition: 0.2s;
         }
 
         #message:focus {
@@ -308,7 +272,6 @@ HTML = """
 
         button {
             border: none;
-
             outline: none;
 
             cursor: pointer;
@@ -318,30 +281,24 @@ HTML = """
             padding: 15px 22px;
 
             background: #00eaff;
-
             color: #001018;
 
             font-weight: bold;
-
             font-size: 15px;
 
-            transition:
-                transform 0.2s,
-                box-shadow 0.2s;
+            transition: 0.2s;
         }
 
         button:hover {
             transform: translateY(-2px);
 
             box-shadow:
-                0 0 18px rgba(0, 234, 255, 0.6);
+                0 0 18px rgba(0, 234, 255, 0.60);
         }
 
         button:disabled {
             opacity: 0.5;
-
             cursor: not-allowed;
-
             transform: none;
         }
 
@@ -372,13 +329,11 @@ HTML = """
             100% {
                 transform: scale(1);
             }
-
         }
 
-
-        /* ==============================================
+        /* =========================================
            STATUS
-        ============================================== */
+        ========================================= */
 
         #status {
             margin-top: 14px;
@@ -400,22 +355,19 @@ HTML = """
             font-size: 12px;
         }
 
-
-        /* ==============================================
+        /* =========================================
            MOBILE
-        ============================================== */
+        ========================================= */
 
         @media (max-width: 650px) {
 
             .container {
                 width: 95%;
-
                 padding: 15px 0;
             }
 
             h1 {
                 font-size: 36px;
-
                 letter-spacing: 5px;
             }
 
@@ -428,7 +380,6 @@ HTML = """
 
             #chat {
                 height: 350px;
-
                 padding: 15px;
             }
 
@@ -448,20 +399,15 @@ HTML = """
                 width: 50px;
                 height: 50px;
             }
-
         }
 
     </style>
-
 </head>
 
 
 <body>
 
 <div class="container">
-
-
-    <!-- HEADER -->
 
     <div class="header">
 
@@ -474,8 +420,6 @@ HTML = """
     </div>
 
 
-    <!-- JARVIS ANIMATION -->
-
     <div
         class="jarvis-circle"
         id="jarvisCircle"
@@ -483,8 +427,6 @@ HTML = """
         🤖
     </div>
 
-
-    <!-- CHAT -->
 
     <div id="chat">
 
@@ -501,8 +443,6 @@ HTML = """
     </div>
 
 
-    <!-- INPUT AREA -->
-
     <div class="input-area">
 
         <input
@@ -515,7 +455,6 @@ HTML = """
         <button
             id="sendButton"
             type="button"
-            onclick="sendMessage()"
         >
             Send
         </button>
@@ -523,7 +462,6 @@ HTML = """
         <button
             id="micButton"
             type="button"
-            onclick="startListening()"
             title="Talk to Jarvis"
         >
             🎤
@@ -531,8 +469,6 @@ HTML = """
 
     </div>
 
-
-    <!-- STATUS -->
 
     <div id="status">
         ● Jarvis Online
@@ -543,16 +479,14 @@ HTML = """
         Jarvis AI Assistant • Gemini
     </div>
 
-
 </div>
 
 
 <script>
 
-
-// =========================================================
+// ============================================================
 // ELEMENTS
-// =========================================================
+// ============================================================
 
 const input =
     document.getElementById("message");
@@ -570,43 +504,26 @@ const statusElement =
     document.getElementById("status");
 
 
-// =========================================================
-// ENTER KEY
-// =========================================================
+// ============================================================
+// VOICE MODE
+// ============================================================
 
-input.addEventListener(
-    "keydown",
-    function(event) {
+// false = user typed
+// true  = user used microphone
 
-        if (event.key === "Enter") {
-
-            event.preventDefault();
-
-            sendMessage();
-
-        }
-
-    }
-);
+let voiceMode = false;
 
 
-// =========================================================
+// ============================================================
 // ADD MESSAGE
-// =========================================================
+// ============================================================
 
-function addMessage(
-    sender,
-    text,
-    type
-) {
+function addMessage(sender, text, type) {
 
     const message =
         document.createElement("div");
 
-
-    message.classList.add(
-        "message"
-    );
+    message.classList.add("message");
 
 
     if (type === "user") {
@@ -627,10 +544,8 @@ function addMessage(
     const senderElement =
         document.createElement("span");
 
-
     senderElement.className =
         "sender";
-
 
     senderElement.textContent =
         sender + ": ";
@@ -638,7 +553,6 @@ function addMessage(
 
     const textElement =
         document.createElement("span");
-
 
     textElement.textContent =
         text;
@@ -648,11 +562,9 @@ function addMessage(
         senderElement
     );
 
-
     message.appendChild(
         textElement
     );
-
 
     chat.appendChild(
         message
@@ -664,13 +576,12 @@ function addMessage(
 
 
     return message;
-
 }
 
 
-// =========================================================
+// ============================================================
 // SEND MESSAGE
-// =========================================================
+// ============================================================
 
 async function sendMessage() {
 
@@ -683,6 +594,21 @@ async function sendMessage() {
     }
 
 
+    /*
+        Save whether this question came
+        from microphone.
+
+        Then reset voice mode so the next
+        typed question does not speak.
+    */
+
+    const shouldSpeak =
+        voiceMode;
+
+    voiceMode =
+        false;
+
+
     addMessage(
         "You",
         userMessage,
@@ -690,7 +616,8 @@ async function sendMessage() {
     );
 
 
-    input.value = "";
+    input.value =
+        "";
 
 
     const thinkingMessage =
@@ -701,9 +628,11 @@ async function sendMessage() {
         );
 
 
-    sendButton.disabled = true;
+    sendButton.disabled =
+        true;
 
-    micButton.disabled = true;
+    micButton.disabled =
+        true;
 
 
     statusElement.textContent =
@@ -724,19 +653,41 @@ async function sendMessage() {
                     },
 
                     body:
-                        JSON.stringify({
-                            message:
-                                userMessage
-                        })
+                        JSON.stringify(
+                            {
+                                message:
+                                    userMessage
+                            }
+                        )
                 }
             );
 
 
-        const data =
-            await response.json();
+        let data;
 
 
-        thinkingMessage.remove();
+        try {
+
+            data =
+                await response.json();
+
+        } catch (jsonError) {
+
+            throw new Error(
+                "Invalid response from server."
+            );
+
+        }
+
+
+        if (
+            thinkingMessage &&
+            thinkingMessage.isConnected
+        ) {
+
+            thinkingMessage.remove();
+
+        }
 
 
         if (!response.ok) {
@@ -749,9 +700,14 @@ async function sendMessage() {
         }
 
 
+        const reply =
+            data.reply ||
+            "Sorry, I couldn't generate a response.";
+
+
         addMessage(
             "Jarvis",
-            data.reply,
+            reply,
             "jarvis"
         );
 
@@ -760,15 +716,37 @@ async function sendMessage() {
             "● Jarvis Online";
 
 
-        speakText(
-            data.reply
-        );
+        /*
+            IMPORTANT
 
-    }
+            Typed question:
+            shouldSpeak = false
+            No voice.
 
-    catch (error) {
+            Microphone question:
+            shouldSpeak = true
+            Jarvis speaks.
+        */
 
-        thinkingMessage.remove();
+        if (shouldSpeak) {
+
+            speakText(
+                reply
+            );
+
+        }
+
+    } catch (error) {
+
+
+        if (
+            thinkingMessage &&
+            thinkingMessage.isConnected
+        ) {
+
+            thinkingMessage.remove();
+
+        }
 
 
         addMessage(
@@ -787,24 +765,23 @@ async function sendMessage() {
             error
         );
 
-    }
+    } finally {
 
-    finally {
+        sendButton.disabled =
+            false;
 
-        sendButton.disabled = false;
-
-        micButton.disabled = false;
+        micButton.disabled =
+            false;
 
         input.focus();
 
     }
-
 }
 
 
-// =========================================================
+// ============================================================
 // TEXT TO SPEECH
-// =========================================================
+// ============================================================
 
 function speakText(text) {
 
@@ -817,9 +794,13 @@ function speakText(text) {
         );
 
         return;
-
     }
 
+
+    /*
+        Stop previous Jarvis speech
+        before starting new speech.
+    */
 
     window.speechSynthesis.cancel();
 
@@ -833,29 +814,96 @@ function speakText(text) {
     speech.lang =
         "en-IN";
 
-
     speech.rate =
         1;
 
-
     speech.pitch =
         1;
-
 
     speech.volume =
         1;
 
 
+    /*
+        Select Indian English voice
+        if available.
+    */
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+
+    const preferredVoice =
+        voices.find(
+            function(voice) {
+
+                return (
+                    voice.lang === "en-IN"
+                );
+
+            }
+        ) ||
+        voices.find(
+            function(voice) {
+
+                return (
+                    voice.lang &&
+                    voice.lang.startsWith("en")
+                );
+
+            }
+        );
+
+
+    if (preferredVoice) {
+
+        speech.voice =
+            preferredVoice;
+
+    }
+
+
+    speech.onstart =
+        function() {
+
+            statusElement.textContent =
+                "🔊 Jarvis is speaking...";
+
+        };
+
+
+    speech.onend =
+        function() {
+
+            statusElement.textContent =
+                "● Jarvis Online";
+
+        };
+
+
+    speech.onerror =
+        function(event) {
+
+            console.error(
+                "Speech Error:",
+                event
+            );
+
+            statusElement.textContent =
+                "● Jarvis Online";
+
+        };
+
+
     window.speechSynthesis.speak(
         speech
     );
-
 }
 
 
-// =========================================================
+// ============================================================
 // MICROPHONE
-// =========================================================
+// ============================================================
 
 function startListening() {
 
@@ -867,10 +915,23 @@ function startListening() {
     if (!SpeechRecognition) {
 
         alert(
-            "Speech recognition is not supported in this browser. Please use Chrome or type your question."
+            "Speech recognition is not supported in this browser. Please use Google Chrome."
         );
 
         return;
+    }
+
+
+    /*
+        If Jarvis is currently speaking,
+        stop it before listening.
+    */
+
+    if (
+        "speechSynthesis" in window
+    ) {
+
+        window.speechSynthesis.cancel();
 
     }
 
@@ -882,18 +943,19 @@ function startListening() {
     recognition.lang =
         "en-IN";
 
-
     recognition.continuous =
         false;
-
 
     recognition.interimResults =
         false;
 
-
     recognition.maxAlternatives =
         1;
 
+
+    // ============================================
+    // MICROPHONE START
+    // ============================================
 
     recognition.onstart =
         function() {
@@ -901,13 +963,16 @@ function startListening() {
             statusElement.textContent =
                 "🎤 Listening...";
 
-
             micButton.classList.add(
                 "listening"
             );
 
         };
 
+
+    // ============================================
+    // MICROPHONE RESULT
+    // ============================================
 
     recognition.onresult =
         function(event) {
@@ -921,8 +986,20 @@ function startListening() {
                 transcript;
 
 
+            /*
+                VERY IMPORTANT:
+
+                This question came from
+                microphone, so Jarvis
+                should speak the answer.
+            */
+
+            voiceMode =
+                true;
+
+
             statusElement.textContent =
-                "● Jarvis Online";
+                "◌ Processing voice...";
 
 
             micButton.classList.remove(
@@ -935,6 +1012,10 @@ function startListening() {
         };
 
 
+    // ============================================
+    // MICROPHONE ERROR
+    // ============================================
+
     recognition.onerror =
         function(event) {
 
@@ -942,6 +1023,10 @@ function startListening() {
                 "Microphone Error:",
                 event.error
             );
+
+
+            voiceMode =
+                false;
 
 
             micButton.classList.remove(
@@ -955,7 +1040,23 @@ function startListening() {
             ) {
 
                 statusElement.textContent =
-                    "Microphone permission denied.";
+                    "❌ Microphone permission denied";
+
+            } else if (
+                event.error ===
+                "no-speech"
+            ) {
+
+                statusElement.textContent =
+                    "🎤 No speech detected";
+
+            } else if (
+                event.error ===
+                "audio-capture"
+            ) {
+
+                statusElement.textContent =
+                    "❌ Microphone not available";
 
             } else {
 
@@ -966,6 +1067,10 @@ function startListening() {
 
         };
 
+
+    // ============================================
+    // MICROPHONE END
+    // ============================================
 
     recognition.onend =
         function() {
@@ -988,48 +1093,138 @@ function startListening() {
         };
 
 
+    // ============================================
+    // START LISTENING
+    // ============================================
+
     try {
 
         recognition.start();
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(
             "Recognition Error:",
             error
         );
 
-    }
 
+        voiceMode =
+            false;
+
+
+        statusElement.textContent =
+            "● Jarvis Online";
+
+    }
 }
 
 
+// ============================================================
+// SEND BUTTON
+// ============================================================
+
+sendButton.addEventListener(
+    "click",
+    function() {
+
+        /*
+            Clicking Send means
+            text mode.
+        */
+
+        voiceMode =
+            false;
+
+        sendMessage();
+
+    }
+);
+
+
+// ============================================================
+// MICROPHONE BUTTON
+// ============================================================
+
+micButton.addEventListener(
+    "click",
+    function() {
+
+        startListening();
+
+    }
+);
+
+
+// ============================================================
+// ENTER KEY
+// ============================================================
+
+input.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+
+            /*
+                Pressing Enter means
+                text mode.
+            */
+
+            voiceMode =
+                false;
+
+            sendMessage();
+
+        }
+
+    }
+);
+
+
+// ============================================================
+// PAGE LOAD
+// ============================================================
+
+window.addEventListener(
+    "load",
+    function() {
+
+        input.focus();
+
+        statusElement.textContent =
+            "● Jarvis Online";
+
+    }
+);
+
 </script>
 
-
 </body>
-
 </html>
 """
 
 
-# =========================================================
-# ROUTES
-# =========================================================
-
+# ============================================================
+# HOME
+# ============================================================
 
 @app.route("/")
 def home():
-    """Render Jarvis web interface."""
-
     return render_template_string(HTML)
 
 
+# ============================================================
+# STATUS
+# ============================================================
+
 @app.route("/api/status", methods=["GET"])
 def status():
-    """Check API status."""
 
     return jsonify(
         {
@@ -1041,19 +1236,23 @@ def status():
     )
 
 
+# ============================================================
+# CHAT
+# ============================================================
+
 @app.route("/api/chat", methods=["POST"])
 def chat():
-    """Send a user message to Gemini."""
 
     try:
 
-        # ---------------------------------------------
-        # API KEY CHECK
-        # ---------------------------------------------
+        # ----------------------------------------------------
+        # GEMINI API KEY
+        # ----------------------------------------------------
 
         api_key = os.environ.get(
             "GEMINI_API_KEY"
         )
+
 
         if not api_key:
 
@@ -1066,18 +1265,20 @@ def chat():
             ), 500
 
 
-        # ---------------------------------------------
-        # GET USER MESSAGE
-        # ---------------------------------------------
+        # ----------------------------------------------------
+        # REQUEST DATA
+        # ----------------------------------------------------
 
         data = request.get_json(
             silent=True
         ) or {}
 
 
-        message = data.get(
-            "message",
-            ""
+        message = str(
+            data.get(
+                "message",
+                ""
+            )
         ).strip()
 
 
@@ -1092,18 +1293,18 @@ def chat():
             ), 400
 
 
-        # ---------------------------------------------
-        # CREATE GEMINI CLIENT
-        # ---------------------------------------------
+        # ----------------------------------------------------
+        # GEMINI CLIENT
+        # ----------------------------------------------------
 
         client = genai.Client(
             api_key=api_key
         )
 
 
-        # ---------------------------------------------
-        # JARVIS PROMPT
-        # ---------------------------------------------
+        # ----------------------------------------------------
+        # SYSTEM PROMPT
+        # ----------------------------------------------------
 
         prompt = f"""
 You are Jarvis, an intelligent AI assistant.
@@ -1116,7 +1317,8 @@ Instructions:
 - Keep simple questions concise.
 - Give detailed explanations when necessary.
 - If the user asks a programming question, provide useful code and explanation.
-- You can communicate naturally in English, Hindi, or Hinglish depending on the user's language.
+- Communicate naturally in English, Hindi, or Hinglish depending on the user's language.
+- Format answers so they are easy to read.
 - Do not claim that you physically control the user's computer or devices.
 
 User:
@@ -1126,21 +1328,19 @@ Jarvis:
 """
 
 
-        # ---------------------------------------------
+        # ----------------------------------------------------
         # GEMINI REQUEST
-        # ---------------------------------------------
+        # ----------------------------------------------------
 
-        response = (
-            client.models.generate_content(
-                model="gemini-3.6-flash",
-                contents=prompt,
-            )
+        response = client.models.generate_content(
+            model="gemini-3.6-flash",
+            contents=prompt,
         )
 
 
-        # ---------------------------------------------
-        # RESPONSE
-        # ---------------------------------------------
+        # ----------------------------------------------------
+        # GEMINI RESPONSE
+        # ----------------------------------------------------
 
         reply = response.text
 
@@ -1173,15 +1373,14 @@ Jarvis:
             {
                 "success": False,
                 "error":
-                    "Jarvis could not process "
-                    "the request.",
+                    "Jarvis could not process the request.",
             }
         ), 500
 
 
-# =========================================================
+# ============================================================
 # LOCAL DEVELOPMENT
-# =========================================================
+# ============================================================
 
 if __name__ == "__main__":
 
